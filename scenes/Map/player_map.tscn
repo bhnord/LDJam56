@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://q1hv1bks0v6u"]
+
+[ext_resource type="Script" path="res://scenes/Map/player_map.gd" id="1_gkupo"]
+[ext_resource type="Texture2D" uid="uid://bmql5u5s2yly2" path="res://sprites/fishy.png" id="1_ry1c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_np5et"]
+size = Vector2(226.548, 53.306)
+
+[node name="Player-Map" type="CharacterBody2D"]
+position = Vector2(807.012, 532.224)
+disable_mode = 2
+script = ExtResource("1_gkupo")
+
+[node name="Fishy" type="Sprite2D" parent="."]
+scale = Vector2(0.14575, 0.276388)
+texture = ExtResource("1_ry1c0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.32342, -3.33163)
+rotation = -3.14159
+scale = Vector2(0.48497, -1)
+shape = SubResource("RectangleShape2D_np5et")
