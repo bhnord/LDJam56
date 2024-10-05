@@ -1,17 +1,30 @@
 extends Node2D
 
+# TODO
+# BEAT_SPEED_INITIAL - Inital 
+# BEAT_SPEED_RAMP_INTERVAL - How often to ramp up the speed
+# BEAT_SPEED_MAX
+
+# SPAWN_CHANCE - How often beats spawn
+# SPAWN_CHANCE_RAMP_INTERVAL - 
+# SPAWN_CHANCE_MAX - 
+
+# PROGRESS BAR - how close you are
+const HIT_ZONE_SIZE = 30;
+
+
 # RIGHT NOW 
 # This is dealing with two beats at the same time so the hits and mistakes are doubled
 # This is not a big deal but just needs to be accounted for when calculating failure
 var beat_scene = preload("res://sprites/Beat.tscn")
-const MIN_SPAWN_INTERVAL = .3;
+var hit_miss_scene = preload("res://scenes/rhythm/HitMissIndicator.tscn")
+const MIN_SPAWN_INTERVAL = .5;
 
 var spawn_timer = 0.0
 var spawn_interval_timer = 0.0;
 var spawn_interval = 1.0;
 
 var spawn_interval_ramp_speed = 10.0;
-var current_speed = 200.0
 
 var total_beats = 0;
 #Not using a basic score so we can tune line snapping and such
@@ -54,28 +67,65 @@ func spawn_beats():
 	
 func spawn_beat(left: bool):
 	var beat = beat_scene.instantiate()
+	beat.init(left)
 	beat.position = Vector2(0 if left else get_viewport().size.x, get_viewport_rect().size[1] - 50)
-	beat.connect("beat_finished", _on_beat_finished)
+	if left:
+		beat.connect("beat_finished", _on_beat_finished)
 	add_child(beat)
+
+func clear_nearest_beat():
+	get_tree().get_nodes_in_group("beats")[0].queue_free()
+
 
 func check_hit():
 	var center = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50) 
-	var hit_area = 25  # Adjust this value to change the hit area size
 	
-	for beat in get_tree().get_nodes_in_group("beats"):
-		if beat.position.distance_to(center) < hit_area:
-			hits += 1
-			beat.queue_free()
-			print("HIT")
-			#update_score()
-			#return
-	return
-	# If no beat was hit
-	mistakes -= 1
-	print("MISSED")
+	var beat_nodes = get_tree().get_nodes_in_group("beats");
+	if(beat_nodes.size() == 0):
+		spawn_too_early_text()
+		mistakes -= 1;
+		
+		return;
+		
+	var nearest_beat_indicator = beat_nodes[0]
+	#We know this is safe
+	var nearest_beat_clone = get_tree().get_nodes_in_group("hidden_beats")[0]
+	
+	if nearest_beat_indicator.position.distance_to(center) < HIT_ZONE_SIZE:
+		hits += 1
+		$Fish.position.x -= 10;
+		spawn_hit_text()
+		print("HIT")
+	else:
+		mistakes -= 1
+		$Fish.position.x += 10;
+		#TODO MAKE TOO EARLY
+		spawn_too_early_text()
+		print("TOO EARLY")
+		
+	nearest_beat_indicator.queue_free()
+	nearest_beat_clone.queue_free()
 	#update_score()
 
+func spawn_miss_text():
+	var text = hit_miss_scene.instantiate()
+	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.MISS)
+	add_child(text)
+
+func spawn_too_early_text():
+	var text = hit_miss_scene.instantiate()
+	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.TOO_EARLY)
+	add_child(text)
+
+func spawn_hit_text():
+	var text = hit_miss_scene.instantiate()
+	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.HIT)
+	add_child(text)
+
 func _on_beat_finished():
-	print("MISSED - NO HIT")
+	print("MISSED")
+	$Fish.position.x += 10;
+	spawn_miss_text()
+
 	mistakes += 1
 	#update_score()

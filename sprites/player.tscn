@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpvlu3o4haytq"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_wvqht"]
+[ext_resource type="Script" path="res://scripts/classes/Fish.gd" id="1_wvqht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nt6j4"]
 
