@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://yfu3l0u0mqg3"]
+
+[ext_resource type="Script" path="res://scripts/hit_miss_indicator.gd" id="1_reip7"]
+[ext_resource type="Texture2D" uid="uid://cpx3ey2gi4jbd" path="res://sprites/rhythm/text/miss.png" id="2_ekeyo"]
+
+[sub_resource type="Animation" id="Animation_586wo"]
+resource_name = "fade_and_rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t2j7b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3pvt"]
+_data = {
+"RESET": SubResource("Animation_t2j7b"),
+"fade_and_rise": SubResource("Animation_586wo")
+}
+
+[node name="HitMissIndicator" type="Node2D"]
+script = ExtResource("1_reip7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y3pvt")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -9)
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_ekeyo")

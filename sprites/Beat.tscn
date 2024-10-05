@@ -9,12 +9,17 @@ signal beat_finished
 
 var speed = 200
 var target_position
-var disappear_time = .1
+var disappear_time = .05
+var is_indicator;
 
+func init(is_i: bool):
+	is_indicator = is_i
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#TODO This prolly shouldnt be hard coded like this
-	add_to_group(\"beats\")
+	add_to_group(\"beats\" if is_indicator else \"hidden_beats\")
+
 	target_position = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

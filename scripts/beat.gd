@@ -2,9 +2,9 @@ extends Node2D
 
 signal beat_finished
 
-var speed = 200
+var speed = 100
 var target_position
-var disappear_time = .1
+var disappear_time = .2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 	var direction = (target_position - position).normalized();
 	var old_pos = position
 	position += direction * speed * delta;
-	if position.distance_to(target_position) < 5:
+	if position.distance_to(target_position) < 40:
 		$DisappearTimer.start(disappear_time)
 		set_process(false)
 		
