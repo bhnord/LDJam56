@@ -8,6 +8,7 @@
 script = ExtResource("1_wvqht")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_nt6j4")
@@ -18,3 +19,5 @@ offset_top = -10.0
 offset_right = 30.0
 offset_bottom = 30.0
 scale = Vector2(0.496707, 0.494368)
+
+[node name="Camera2D" type="Camera2D" parent="."]
