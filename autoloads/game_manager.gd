@@ -8,6 +8,7 @@ extends Node
 @export var fins : int = 0
 @export var MAX_ENERGY : int = 3
 @export var energy : int = MAX_ENERGY
+var MAX_LVL : int = 5
 
 var money_day : int = 0
 var humans_caught : Array[Human] = []
@@ -17,14 +18,15 @@ func _ready() -> void:
 
 # use these to interact with money
 func add_money(amount : int) -> void:
-	money += amount
+	money_day+=amount
 	
 func subtract_money(amount : int) -> void:
 	money = clamp(money-amount, 0, money)
 	
-func catch_human(worth: int, human: Human):
-	money_day+=worth
+func catch_human(human: Human):
+	money_day+=human.WORTH
 	humans_caught.append(human)
+
 	
 func end_day():
 	money += money_day
