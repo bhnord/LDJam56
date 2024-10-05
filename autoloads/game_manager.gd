@@ -8,6 +8,26 @@ extends Node
 @export var fins : int = 0
 @export var MAX_ENERGY : int = 3
 @export var energy : int = MAX_ENERGY
+var level_settings = {
+	beat_spawn_speed =  1.0,
+	beat_spawn_speed_ramp_interval = 10.0,
+	beat_spawn_speed_ramp_amount = .1,
+	beat_spawn_speed_min =  .3,
+	
+	spawn_chance = .6,
+	spawn_chance_ramp_interval = 10.0,
+	spawn_chance_ramp_amount = .05,
+	spawn_chance_max = .9,
+
+
+# BEAT_SPEED_RAMP_INTERVAL - How often to ramp up the speed
+# BEAT_SPEED_MAX
+
+# SPAWN_CHANCE - How often beats spawn
+# SPAWN_CHANCE_RAMP_INTERVAL - 
+# SPAWN_CHANCE_MAX - 
+}
+
 var MAX_LVL : int = 5
 
 var money_day : int = 0

@@ -20,45 +20,81 @@ var beat_scene = preload("res://sprites/Beat.tscn")
 var hit_miss_scene = preload("res://scenes/rhythm/HitMissIndicator.tscn")
 const MIN_SPAWN_INTERVAL = .5;
 
-var spawn_timer = 0.0
-var spawn_interval_timer = 0.0;
-var spawn_interval = 1.0;
+var beat_speed_initial
 
-var spawn_interval_ramp_speed = 10.0;
+var spawn_beat_timer = 0.0
+var spawn_beat_interval_ramp_timer = 0.0
+var spawn_chance_interval_ramp_timer = 0.0
+
 
 var total_beats = 0;
 #Not using a basic score so we can tune line snapping and such
 var mistakes = 0;
 var hits = 0;
-var central_beat
 
+var settings;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	settings = adjust_settings_by_upgrades(GameManager.level_settings)
 	setup_central_beat()
-	pass # Replace with function body.
+
+#TODO
+func adjust_settings_by_upgrades(settings):
+	return settings
 
 func setup_central_beat():
-	central_beat = $CentralBeat
-	central_beat.position = Vector2(get_viewport().get_visible_rect().size.x / 2, get_viewport_rect().size[1] - 50)
-	central_beat.z_index = 10;
-	add_child(central_beat)
+	$CentralBeat.position = Vector2(get_viewport().get_visible_rect().size.x / 2, get_viewport_rect().size[1] - 50)
+	$CentralBeat.z_index = 10;
+	# add_child($CentralBeat)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	spawn_timer += delta;
-	spawn_interval_timer += delta; 
-	if spawn_timer > spawn_interval:
-		spawn_beats()
-		spawn_timer = 0.0;
-	
-	if spawn_interval_timer > spawn_interval_ramp_speed:
-		print("Ramping up speed")
-		spawn_interval = max(spawn_interval - .2, MIN_SPAWN_INTERVAL)
-		spawn_interval_timer = 0.0
+	handle_beat_spawn(delta)
+	handle_beat_spawn_interval_ramp(delta)
+	handle_spawn_chance_interval_ramp(delta)
+	#spawn_timer += delta;
+	#spawn_interval_timer += delta; 
+	#if spawn_timer > spawn_interval:
+		#spawn_beats()
+		#spawn_timer = 0.0;
+	#
+	#if spawn_interval_timer > spawn_interval_ramp_speed:
+		#print("Ramping up speed")
+		#spawn_interval = max(spawn_interval - .2, MIN_SPAWN_INTERVAL)
+		#spawn_interval_timer = 0.0
 		
 	if Input.is_action_just_pressed("rhythm_key"):
 		check_hit()
+
+func handle_beat_spawn(delta: float):
+	spawn_beat_timer += delta;
+	if spawn_beat_timer > settings.beat_spawn_speed:
+		if randf() <= settings.spawn_chance:
+			spawn_beats();
+
+		spawn_beat_timer = 0.0
+		pass;
+	
+func handle_beat_spawn_interval_ramp(delta: float):
+	spawn_beat_interval_ramp_timer += delta;
+	if spawn_beat_interval_ramp_timer > settings.beat_spawn_speed_ramp_interval:
+		var new_spawn_speed = max(settings.beat_spawn_speed + settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
+		print("RAMPING UP SPEED - FROM:", settings.beat_spawn_speed, " TO:", new_spawn_speed)
+		settings.beat_spawn_speed = new_spawn_speed
+		spawn_beat_interval_ramp_timer = 0.0
+		pass;
+	pass;
+
+func handle_spawn_chance_interval_ramp(delta: float):
+	spawn_chance_interval_ramp_timer += delta;
+	if spawn_beat_interval_ramp_timer > settings.beat_spawn_speed_ramp_interval:
+		var new_spawn_chance = min(settings.spawn_chance - settings.spawn_chance_ramp_amount, settings.spawn_chance_max);
+		print("RAMPING SPAWN CHANCE - FROM:", settings.spawn_chance, " TO:", new_spawn_chance)
+		settings.spawn_chanced = new_spawn_chance
+		spawn_beat_interval_ramp_timer = 0.0
+		pass;
+	pass;
 
 func spawn_beats():
 	total_beats += 2 #TODO This is set to two to justify the double hits and misses issue	
