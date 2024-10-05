@@ -58,6 +58,12 @@ offset_bottom = -17.0
 text = "Third more sinister thing cost: 
 "
 
+[node name="ErrorLabel" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 208.0
+offset_right = 527.0
+offset_bottom = 231.0
+
 [connection signal="pressed" from="Strength" to="." method="_on_strength_pressed"]
 [connection signal="pressed" from="Agility" to="." method="_on_agility_pressed"]
 [connection signal="pressed" from="ThirdMoreSinisterThing" to="." method="_on_third_more_sinister_thing_pressed"]
