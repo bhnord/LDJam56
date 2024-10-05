@@ -22,10 +22,8 @@ func _physics_process(delta: float) -> void:
 
 func _process(_delta):
 	if Input.is_action_just_pressed("bite_hook"):
-		print("action logged")
 		var hook = nearby_hooks.pop_front()
 		if hook:
-			print("hook found")
 			hook.interact()
 	
 	

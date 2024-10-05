@@ -1,11 +1,5 @@
 extends Node
 class_name Human
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+var WEIGHT:int = randi()%300 + 100 #100lb to 400lb
+var SIZE: float = randf() % 4 + 4 #4ft to 8ft
