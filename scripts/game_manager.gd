@@ -13,7 +13,7 @@ func add_money(amount : int) -> void:
 	money += amount
 	
 func subtract_money(amount : int) -> void:
-	money -= amount
+	money = clamp(money-amount, 0, money)
 	
 func purchase_item(cost : int) -> bool:
 	var success = false
