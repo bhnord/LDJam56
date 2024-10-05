@@ -1,10 +1,7 @@
 extends Node2D
 
 func _ready() -> void:
-	$Booster/BoosterCost.text = "Booster Cost: " + str(get_upgrade_cost(GameManager.booster))
-	$ReinforcedMouth/ReinforcedMouthCost.text = "Reinforce Mouth Cost: " + str(get_upgrade_cost(GameManager.mouth))
-	$Fins/FinsCost.text = "Fins Cost: " + str(get_upgrade_cost(GameManager.fins))
-	$Money.text = str(GameManager.money)
+	update_label()
 
 func _on_booster_pressed() -> void:  	
 	if GameManager.purchase_item(get_upgrade_cost(GameManager.booster)):
@@ -35,6 +32,9 @@ func get_upgrade_cost(level : int) -> int:
 
 func update_label() -> void:
 	$Money.text = str(GameManager.money)
+	$Booster.text = "Booster " + str(GameManager.booster)
+	$Fins.text = "Fins " + str(GameManager.fins)
+	$ReinforcedMouth.text = "Reinforced Mouth " + str(GameManager.mouth)
 	$Booster/BoosterCost.text = "Booster Cost: " + str(get_upgrade_cost(GameManager.booster))
 	$Fins/FinsCost.text = "Fins Cost: " + str(get_upgrade_cost(GameManager.fins))
 	$ReinforcedMouth/ReinforcedMouthCost.text = "Reinforced Mouth Cost: " + str(get_upgrade_cost(GameManager.mouth))
