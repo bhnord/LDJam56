@@ -12,6 +12,5 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _interact():
-	pass
-	## start reeling sequence here
+func interact():
+	SceneManager.switch_to_scene(SceneManager.Scene.PULLING_ROD)

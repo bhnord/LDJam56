@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d27xppvhqnxj0"]
+
+[node name="PullingRod" type="Node2D"]
+position = Vector2(438, 181)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+offset_left = 208.0
+offset_top = 2.0
+offset_right = 248.0
+offset_bottom = 42.0
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+offset_left = -21.6214
+offset_top = 224.0
+offset_right = 18.3786
+offset_bottom = 264.0
+scale = Vector2(7.10067, 1.04007)
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+offset_left = 104.0
+offset_top = 79.0
+offset_right = 144.0
+offset_bottom = 119.0
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+offset_left = -59.6214
+offset_top = 144.0
+offset_right = -19.6214
+offset_bottom = 184.0
+rotation = 0.911086
+scale = Vector2(3.20881, 0.961142)
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect6" type="ColorRect" parent="."]
+offset_left = 338.379
+offset_top = 171.0
+offset_right = 378.379
+offset_bottom = 211.0
+rotation = 2.2655
+scale = Vector2(3.20881, 0.961142)
+color = Color(0.93, 0.806, 0, 1)
+metadata/_edit_use_anchors_ = true
