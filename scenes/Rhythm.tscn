@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tcski75v85be"]
+
+[ext_resource type="Script" path="res://scripts/rhythm.gd" id="1_xbdkm"]
+
+[node name="Rhythm" type="Node2D"]
+script = ExtResource("1_xbdkm")
