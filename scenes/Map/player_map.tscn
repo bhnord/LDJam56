@@ -8,6 +8,7 @@ size = Vector2(226.548, 53.306)
 
 [node name="Player-Map" type="CharacterBody2D"]
 position = Vector2(807.012, 532.224)
+disable_mode = 2
 script = ExtResource("1_gkupo")
 
 [node name="Fishy" type="Sprite2D" parent="."]

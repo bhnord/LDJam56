@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck7xit4w37my4"]
+[gd_scene load_steps=4 format=3 uid="uid://ck7xit4w37my4"]
 
+[ext_resource type="PackedScene" uid="uid://p8whpufxdlmy" path="res://scenes/Map/map_location.tscn" id="1_6icf7"]
 [ext_resource type="Texture2D" uid="uid://dblndovm416g3" path="res://sprites/Map/map.png" id="1_de20k"]
 [ext_resource type="PackedScene" uid="uid://q1hv1bks0v6u" path="res://scenes/Map/player_map.tscn" id="2_a24cd"]
 
@@ -11,4 +12,27 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_de20k")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+scale = Vector2(1, 1)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1126.99, 294.849)
+scale = Vector2(79.2518, -46.675)
+polygon = PackedVector2Array(-9.51526, 1.67741, -8.75908, 1.35621, -7.39375, 1.42759, -6.11245, 2.17707, -3.86492, 2.60534, -2.62562, 2.24845, -1.99547, 1.14207, -2.1005, -0.285517, -1.99547, -0.927931, -0.693163, -0.678103, 0.420101, -0.820862, 0.756181, -2.07, 0.357086, -4.38983, 0.105026, -6.28138, 1.07126, -8.85103, 2.9407, -9.56482, 4.30602, -9.06517, 4.72612, -6.60258, 4.28502, -3.81879, 4.45306, -0.99931, 5.69235, 0.0356894, 6.04944, 0.178448, 7.30974, -1.89155, 7.85587, -1.24914, 6.7216, 0.96362, 7.03667, 3.06931, 7.51979, 3.71172, 8.69606, 4.06862, 9.32621, 4.8181, 9.93536, 6.42413, -9.05315, 6.31706, -9.74631, 4.56827, -9.91435, 2.96224)
+
+[node name="Loc-Dock" parent="." instance=ExtResource("1_6icf7")]
+position = Vector2(1749.58, 394.798)
+scale = Vector2(1, 1)
+
+[node name="Loc-Beach" parent="." instance=ExtResource("1_6icf7")]
+position = Vector2(747.443, 201.564)
+scale = Vector2(1, 1)
+
+[node name="Loc-Ship" parent="." instance=ExtResource("1_6icf7")]
+position = Vector2(710.82, 852.897)
+scale = Vector2(1, 1)
+
 [node name="Player-Map" parent="." instance=ExtResource("2_a24cd")]
+position = Vector2(807.012, 532.224)
+scale = Vector2(1, 1)
