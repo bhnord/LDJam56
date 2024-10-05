@@ -19,8 +19,10 @@ func update_label() -> void:
 func _on_third_more_sinister_thing_pressed() -> void:
 	pass # Replace with function body.
 
-
 func _on_agility_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_next_day_pressed() -> void:
 	pass # Replace with function body.
 
 func get_upgrade_cost(level : int) -> int: 

@@ -64,6 +64,14 @@ offset_top = 208.0
 offset_right = 527.0
 offset_bottom = 231.0
 
+[node name="NextDay" type="Button" parent="."]
+offset_left = 883.0
+offset_top = 258.0
+offset_right = 962.0
+offset_bottom = 289.0
+text = "Next Day"
+
 [connection signal="pressed" from="Strength" to="." method="_on_strength_pressed"]
 [connection signal="pressed" from="Agility" to="." method="_on_agility_pressed"]
 [connection signal="pressed" from="ThirdMoreSinisterThing" to="." method="_on_third_more_sinister_thing_pressed"]
+[connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
