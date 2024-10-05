@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://cekykltyjsy2j"]
+[gd_scene load_steps=2 format=3 uid="uid://cekykltyjsy2j"]
+
+[ext_resource type="Script" path="res://scripts/end_of_day.gd" id="1_chsoj"]
 
 [node name="EndOfDay" type="Node2D"]
+script = ExtResource("1_chsoj")
+
+[node name="HumansCaught" type="Label" parent="."]
+offset_left = 66.0
+offset_top = 52.0
+offset_right = 235.0
+offset_bottom = 149.0
+scale = Vector2(1.83449, 1.83449)
+text = "ddd"
+
+[node name="MoneyEarned" type="Label" parent="."]
+offset_left = 98.0
+offset_top = 368.0
+offset_right = 425.0
+offset_bottom = 444.0
+scale = Vector2(1.25138, 1.25138)
+text = "ddddd"

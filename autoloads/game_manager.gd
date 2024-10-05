@@ -25,6 +25,11 @@ func subtract_money(amount : int) -> void:
 func catch_human(worth: int, human: Human):
 	money_day+=worth
 	humans_caught.append(human)
+	
+func end_day():
+	money += money_day
+	money_day = 0
+	humans_caught = []
 
 # purchasing upgrades
 func purchase_item(cost : int) -> bool:
