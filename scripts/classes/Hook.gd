@@ -7,7 +7,6 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func interact():
-	print("interacted")
 	SceneManager.switch_to_scene(SceneManager.Scene.PULLING_ROD)
 
 
