@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="LDJam56"
+run/main_scene="res://scenes/GameManager.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
