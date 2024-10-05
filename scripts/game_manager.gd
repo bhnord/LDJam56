@@ -14,7 +14,10 @@ func add_money(amount : int) -> void:
 	
 func subtract_money(amount : int) -> void:
 	money -= amount
-
-func _on_item_purchase_pressed() -> void:
-	add_money(10)
-	print(money)
+	
+func purchase_item(cost : int) -> bool:
+	var success = false
+	if(money - cost >= 0):
+		money -= cost
+		success = true
+	return success
