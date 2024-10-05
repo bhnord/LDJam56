@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck7xit4w37my4"]
+
+[ext_resource type="Texture2D" uid="uid://dblndovm416g3" path="res://assets/map.png" id="1_5dxbi"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ngo7p"]
+
+[node name="Map" type="Node2D"]
+scale = Vector2(0.600715, 0.600307)
+
+[node name="Node2D" type="Node2D" parent="."]
+material = SubResource("CanvasItemMaterial_ngo7p")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_5dxbi")
