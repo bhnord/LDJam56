@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck7xit4w37my4"]
+
+[ext_resource type="Texture2D" uid="uid://dblndovm416g3" path="res://sprites/Map/map.png" id="1_de20k"]
+[ext_resource type="PackedScene" uid="uid://q1hv1bks0v6u" path="res://scenes/Map/player_map.tscn" id="2_a24cd"]
+
+[node name="Map" type="Node2D"]
+scale = Vector2(0.600715, 0.600307)
+
+[node name="Map Picture" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_de20k")
+
+[node name="Player-Map" parent="." instance=ExtResource("2_a24cd")]

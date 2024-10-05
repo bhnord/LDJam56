@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://p8whpufxdlmy"]
+
+[ext_resource type="Script" path="res://scripts/MapScripts/map_location.gd" id="1_34f74"]
+[ext_resource type="Texture2D" uid="uid://qnhbxfbx88so" path="res://sprites/Map/Location.png" id="2_ra8o3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ysi1u"]
+radius = 94.5952
+
+[node name="MapLocation" type="Area2D"]
+script = ExtResource("1_34f74")
+
+[node name="Location" type="Sprite2D" parent="."]
+scale = Vector2(0.316327, 0.306122)
+texture = ExtResource("2_ra8o3")
+
+[node name="LocationName" type="RichTextLabel" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = -67.0
+offset_top = -24.0
+offset_right = -27.0
+offset_bottom = 16.0
+scale = Vector2(3.32967, -0.69697)
+
+[node name="LocationCollisionBox" type="CollisionShape2D" parent="."]
+scale = Vector2(0.951923, 0.978182)
+shape = SubResource("CircleShape2D_ysi1u")
