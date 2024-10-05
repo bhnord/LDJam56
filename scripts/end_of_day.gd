@@ -6,6 +6,5 @@ func _ready() -> void:
 	$HumansCaught.text = "You Caught " + str(len(GameManager.humans_caught)) + " Humans"
 	$MoneyEarned.text = "Gained $" + str(GameManager.money_day)
 
-
-func go_to_shop():
+func _on_button_pressed() -> void:
 	SceneManager.switch_to_scene(SceneManager.Scene.SHOP)

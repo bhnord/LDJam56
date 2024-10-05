@@ -5,6 +5,12 @@
 [node name="EndOfDay" type="Node2D"]
 script = ExtResource("1_chsoj")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.7584, 16.1584)
+color = Color(0.39, 0.17511, 0.1677, 1)
+
 [node name="HumansCaught" type="Label" parent="."]
 offset_left = 66.0
 offset_top = 52.0
@@ -20,3 +26,12 @@ offset_right = 425.0
 offset_bottom = 444.0
 scale = Vector2(1.25138, 1.25138)
 text = "ddddd"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 856.0
+offset_top = 578.0
+offset_right = 1134.0
+offset_bottom = 630.0
+text = "Continue to Upgrades"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 
 enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP}
-var scenes = ["res://scenes/PullingRod.tscn", "res//scenes/Beach.tscn", "res//scenes/EndOfDay.tscn", "res//scenes/Shop.tscn"]
+var scenes = ["res://scenes/PullingRod.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn"]
 
 
 # Called when the node enters the scene tree for the first time.
