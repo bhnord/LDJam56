@@ -3,7 +3,9 @@ extends Node
 @export var money : int = 0
 
 # store player stats here e.g. strength
-@export var strength : int = 0
+@export var booster : int = 0
+@export var mouth : int = 0
+@export var fins : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

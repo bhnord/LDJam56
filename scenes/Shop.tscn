@@ -12,51 +12,51 @@ offset_right = 978.0
 offset_bottom = 65.0
 text = "0"
 
-[node name="Strength" type="Button" parent="."]
+[node name="Booster" type="Button" parent="."]
 offset_left = 412.0
 offset_top = 328.0
 offset_right = 558.0
 offset_bottom = 360.0
-text = "Upgrade Strength"
+text = "Booster
+"
 
-[node name="StrengthCost" type="Label" parent="Strength"]
+[node name="BoosterCost" type="Label" parent="Booster"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = -30.0
 offset_right = 117.0
 offset_bottom = -7.0
-text = "Strength Cost: "
+text = "Booster Cost"
 
-[node name="Agility" type="Button" parent="."]
+[node name="ReinforcedMouth" type="Button" parent="."]
 offset_left = 812.0
 offset_top = 353.0
 offset_right = 868.0
 offset_bottom = 384.0
-text = "Agility"
+text = "Mouth"
 
-[node name="AgilityCost" type="Label" parent="Agility"]
+[node name="ReinforcedMouthCost" type="Label" parent="ReinforcedMouth"]
 layout_mode = 0
 offset_left = -27.0
 offset_top = -30.0
 offset_right = 68.0
 offset_bottom = -7.0
-text = "Agility Cost: "
+text = "Mouth Cost: "
 
-[node name="ThirdMoreSinisterThing" type="Button" parent="."]
+[node name="Fins" type="Button" parent="."]
 offset_left = 112.0
 offset_top = 478.0
 offset_right = 330.0
 offset_bottom = 509.0
-text = "A Third More Sinister Thing"
+text = "Fins"
 
-[node name="ThirdCost" type="Label" parent="ThirdMoreSinisterThing"]
+[node name="FinsCost" type="Label" parent="Fins"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = -40.0
 offset_right = 204.0
 offset_bottom = -17.0
-text = "Third more sinister thing cost: 
-"
+text = "Fins Cost: "
 
 [node name="ErrorLabel" type="Label" parent="."]
 offset_left = 487.0
@@ -71,7 +71,7 @@ offset_right = 962.0
 offset_bottom = 289.0
 text = "Next Day"
 
-[connection signal="pressed" from="Strength" to="." method="_on_strength_pressed"]
-[connection signal="pressed" from="Agility" to="." method="_on_agility_pressed"]
-[connection signal="pressed" from="ThirdMoreSinisterThing" to="." method="_on_third_more_sinister_thing_pressed"]
+[connection signal="pressed" from="Booster" to="." method="_on_booster_pressed"]
+[connection signal="pressed" from="ReinforcedMouth" to="." method="_on_mouth_pressed"]
+[connection signal="pressed" from="Fins" to="." method="_on_fins_pressed"]
 [connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]
