@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfonpmtdtv4xx"]
+
+[ext_resource type="Script" path="res://scripts/hooks.gd" id="1_0ntxh"]
+
+[node name="Hooks" type="Node"]
+script = ExtResource("1_0ntxh")
