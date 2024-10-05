@@ -1,5 +1,11 @@
 extends Node2D
 
+enum Action {
+	HIT,
+	MISS,
+	TOO_EARLY
+}
+
 # TODO
 # BEAT_SPEED_INITIAL - Inital 
 # BEAT_SPEED_RAMP_INTERVAL - How often to ramp up the speed
@@ -26,7 +32,6 @@ var spawn_beat_timer = 0.0
 var spawn_beat_interval_ramp_timer = 0.0
 var spawn_chance_interval_ramp_timer = 0.0
 
-
 var total_beats = 0;
 #Not using a basic score so we can tune line snapping and such
 var mistakes = 0;
@@ -50,19 +55,10 @@ func setup_central_beat():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	handle_beat_spawn(delta)
 	handle_beat_spawn_interval_ramp(delta)
 	handle_spawn_chance_interval_ramp(delta)
-	#spawn_timer += delta;
-	#spawn_interval_timer += delta; 
-	#if spawn_timer > spawn_interval:
-		#spawn_beats()
-		#spawn_timer = 0.0;
-	#
-	#if spawn_interval_timer > spawn_interval_ramp_speed:
-		#print("Ramping up speed")
-		#spawn_interval = max(spawn_interval - .2, MIN_SPAWN_INTERVAL)
-		#spawn_interval_timer = 0.0
 		
 	if Input.is_action_just_pressed("rhythm_key"):
 		check_hit()
@@ -79,7 +75,7 @@ func handle_beat_spawn(delta: float):
 func handle_beat_spawn_interval_ramp(delta: float):
 	spawn_beat_interval_ramp_timer += delta;
 	if spawn_beat_interval_ramp_timer > settings.beat_spawn_speed_ramp_interval:
-		var new_spawn_speed = max(settings.beat_spawn_speed + settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
+		var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
 		print("RAMPING UP SPEED - FROM:", settings.beat_spawn_speed, " TO:", new_spawn_speed)
 		settings.beat_spawn_speed = new_spawn_speed
 		spawn_beat_interval_ramp_timer = 0.0
@@ -118,50 +114,47 @@ func check_hit():
 	
 	var beat_nodes = get_tree().get_nodes_in_group("beats");
 	if(beat_nodes.size() == 0):
-		spawn_too_early_text()
-		mistakes -= 1;
-		
+		handle_action(Action.TOO_EARLY)
 		return;
 		
 	var nearest_beat_indicator = beat_nodes[0]
 	#We know this is safe
 	var nearest_beat_clone = get_tree().get_nodes_in_group("hidden_beats")[0]
-	
 	if nearest_beat_indicator.position.distance_to(center) < HIT_ZONE_SIZE:
-		hits += 1
-		$Fish.position.x -= 10;
-		spawn_hit_text()
-		print("HIT")
+		handle_action(Action.HIT)
 	else:
-		mistakes -= 1
-		$Fish.position.x += 10;
-		#TODO MAKE TOO EARLY
-		spawn_too_early_text()
-		print("TOO EARLY")
+		handle_action(Action.TOO_EARLY)
 		
 	nearest_beat_indicator.queue_free()
 	nearest_beat_clone.queue_free()
-	#update_score()
-
-func spawn_miss_text():
-	var text = hit_miss_scene.instantiate()
-	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.MISS)
-	add_child(text)
-
-func spawn_too_early_text():
-	var text = hit_miss_scene.instantiate()
-	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.TOO_EARLY)
-	add_child(text)
-
-func spawn_hit_text():
-	var text = hit_miss_scene.instantiate()
-	text.init(Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 80), text.HitState.HIT)
-	add_child(text)
 
 func _on_beat_finished():
-	print("MISSED")
-	$Fish.position.x += 10;
-	spawn_miss_text()
+	handle_action(Action.MISS)
 
-	mistakes += 1
-	#update_score()
+func spawn_text(action: Action):
+	var text = hit_miss_scene.instantiate()
+	
+	var hit_state
+	#CURSED TOO LAZY TOO DO IT RIGHT
+	match action:
+		Action.MISS:
+			hit_state = text.HitState.MISS
+		Action.HIT:
+			hit_state = text.HitState.HIT
+		Action.TOO_EARLY:
+			hit_state = text.HitState.TOO_EARLY
+	
+	var viewport_size = get_viewport_rect().size
+	var spawn_position = Vector2(viewport_size.x / 2, viewport_size.y - 80)
+	
+	text.init(spawn_position, hit_state)
+	add_child(text)
+
+func handle_action(action: Action):
+	print(action)
+	spawn_text(action)
+	match action:
+		Action.HIT:
+			$Fish.handle_hit()
+		Action.MISS, Action.TOO_EARLY:
+			$Fish.handle_miss()

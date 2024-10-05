@@ -9,10 +9,10 @@ extends Node
 @export var MAX_ENERGY : int = 3
 @export var energy : int = MAX_ENERGY
 var level_settings = {
-	beat_spawn_speed =  1.0,
+	beat_spawn_speed =  .5,
 	beat_spawn_speed_ramp_interval = 10.0,
 	beat_spawn_speed_ramp_amount = .1,
-	beat_spawn_speed_min =  .3,
+	beat_spawn_speed_min =  .1,
 	
 	spawn_chance = .6,
 	spawn_chance_ramp_interval = 10.0,
