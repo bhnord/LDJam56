@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://tcski75v85be"]
+[gd_scene load_steps=4 format=3 uid="uid://tcski75v85be"]
 
 [ext_resource type="Script" path="res://scripts/rhythm.gd" id="1_xbdkm"]
+[ext_resource type="Script" path="res://scripts/central_beat.gd" id="2_i2xdn"]
+[ext_resource type="Texture2D" uid="uid://cj5wy5d5q8rli" path="res://sprites/beat-01.png" id="2_mdvju"]
 
 [node name="Rhythm" type="Node2D"]
 script = ExtResource("1_xbdkm")
+
+[node name="CentralBeat" type="Node2D" parent="."]
+script = ExtResource("2_i2xdn")
+
+[node name="Sprite2D" type="Sprite2D" parent="CentralBeat"]
+texture = ExtResource("2_mdvju")
