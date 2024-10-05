@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameManager="*res://autoloads/game_manager.gd"
 SceneManager="*res://autoloads/scene_manager.gd"
 
+[dotnet]
+
+project/assembly_name="LDJam56"
+
 [input]
 
 up={

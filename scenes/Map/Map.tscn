@@ -14,7 +14,6 @@ texture = ExtResource("1_de20k")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false
-scale = Vector2(1, 1)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(1126.99, 294.849)
@@ -23,16 +22,11 @@ polygon = PackedVector2Array(-9.51526, 1.67741, -8.75908, 1.35621, -7.39375, 1.4
 
 [node name="Loc-Dock" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(1749.58, 394.798)
-scale = Vector2(1, 1)
 
 [node name="Loc-Beach" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(747.443, 201.564)
-scale = Vector2(1, 1)
 
 [node name="Loc-Ship" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(710.82, 852.897)
-scale = Vector2(1, 1)
 
 [node name="Player-Map" parent="." instance=ExtResource("2_a24cd")]
-position = Vector2(807.012, 532.224)
-scale = Vector2(1, 1)
