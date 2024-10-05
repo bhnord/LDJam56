@@ -4,3 +4,8 @@
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_tlfaf")
+money = null
+booster = null
+mouth = null
+fins = null
+MAX_ENERGY = null
