@@ -61,8 +61,8 @@ func will_cause_overshoot(old_distance, new_distance):
 
 
 func _on_disappear_timer_timeout():
-	emit_signal(\"beat_finished\")
 	queue_free()
+	emit_signal(\"beat_finished\")
 "
 
 [node name="Beat" type="Node2D"]
