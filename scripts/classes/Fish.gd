@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(_delta):
-	if Input.is_action_just_pressed("bite_hook"):
+	if Input.is_action_just_pressed("ui_accept"):
 		var hook = nearby_hooks.pop_front()
 		if hook:
 			hook.interact()

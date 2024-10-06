@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://q1hv1bks0v6u"]
 
 [ext_resource type="Script" path="res://scenes/Map/player_map.gd" id="1_gkupo"]
-[ext_resource type="Texture2D" uid="uid://bmql5u5s2yly2" path="res://sprites/fishy.png" id="1_ry1c0"]
+[ext_resource type="Texture2D" uid="uid://db7vbb15hit1o" path="res://sprites/fishy.png" id="1_ry1c0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_np5et"]
 size = Vector2(226.548, 53.306)
