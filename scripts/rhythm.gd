@@ -12,8 +12,7 @@ enum Action {
 # BETTER BEAT DETECTION AND GAMEPLAY
 # PROGRESS BAR - how close you are
 const HIT_ZONE_SIZE = 30;
-var beat_speed = 200
-
+ 
 # RIGHT NOW 
 # This is dealing with two beats at the same time so the hits and mistakes are doubled
 # This is not a big deal but just needs to be accounted for when calculating failure
@@ -23,7 +22,7 @@ const MIN_SPAWN_INTERVAL = .5;
 
 var beat_speed_initial
 
-var spawn_beat_timer = 0.0
+var spawn_beat_timer = 0.0 
 var spawn_beat_interval_ramp_timer = 0.0
 var beat_speed_interval_ramp_timer = 0.0
 var spawn_chance_interval_ramp_timer = 0.0
@@ -37,6 +36,7 @@ var settings;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	settings = adjust_settings_by_upgrades(GameManager.level_settings)
+	$Fish/AnimatedFish.play("default")
 
 #TODO
 func adjust_settings_by_upgrades(settings):

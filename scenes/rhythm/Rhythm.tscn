@@ -1,25 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://tcski75v85be"]
+[gd_scene load_steps=11 format=3 uid="uid://tcski75v85be"]
 
 [ext_resource type="Script" path="res://scripts/rhythm.gd" id="1_jh0ac"]
+[ext_resource type="Texture2D" uid="uid://diu8a582786vl" path="res://sprites/scene_swimmingGame.png" id="2_6ywib"]
 [ext_resource type="Script" path="res://scripts/central_beat.gd" id="2_edscl"]
 [ext_resource type="Texture2D" uid="uid://cj5wy5d5q8rli" path="res://sprites/beat-01.png" id="3_ruafc"]
-[ext_resource type="Texture2D" uid="uid://db7vbb15hit1o" path="res://sprites/fishy.png" id="4_h1kwj"]
 [ext_resource type="Script" path="res://scripts/rhythm_fish.gd" id="5_dfhau"]
+[ext_resource type="Texture2D" uid="uid://dill6txsnscsj" path="res://sprites/fishy_animation/fishy_animation_fr002.png" id="6_81l01"]
+[ext_resource type="Texture2D" uid="uid://dd8xeh1kctq37" path="res://sprites/fishy_animation/fishy_animation_fr001.png" id="7_wqo03"]
+[ext_resource type="Texture2D" uid="uid://dd01oxt1tmm2r" path="res://sprites/fishy_animation/fishy_animation_fr003.png" id="8_2qpyg"]
+[ext_resource type="Texture2D" uid="uid://cwo6ny8me8wh6" path="res://sprites/fishy_animation/fishy_animation_fr004.png" id="9_nmkp4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxu7x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_81l01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wqo03")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2qpyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nmkp4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
 
 [node name="Rhythm" type="Node2D"]
 script = ExtResource("1_jh0ac")
+
+[node name="UnderwaterBeach" type="Sprite2D" parent="."]
+position = Vector2(581, 343)
+scale = Vector2(0.625521, 0.671296)
+texture = ExtResource("2_6ywib")
 
 [node name="CentralBeat" type="Node2D" parent="."]
 script = ExtResource("2_edscl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CentralBeat"]
+modulate = Color(0, 0, 1, 1)
 scale = Vector2(0.96875, 0.96875)
 texture = ExtResource("3_ruafc")
 
 [node name="Fish" type="CharacterBody2D" parent="."]
 script = ExtResource("5_dfhau")
 
-[node name="FishSprite" type="Sprite2D" parent="Fish"]
-position = Vector2(562, 0)
-scale = Vector2(0.249181, 0.43299)
-texture = ExtResource("4_h1kwj")
+[node name="AnimatedFish" type="AnimatedSprite2D" parent="Fish"]
+position = Vector2(571, -24)
+scale = Vector2(0.425926, 0.425926)
+sprite_frames = SubResource("SpriteFrames_nxu7x")
+frame_progress = 0.641852
