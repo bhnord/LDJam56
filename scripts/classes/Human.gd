@@ -31,4 +31,3 @@ func pull()->int:
 		return int(WORTH/4)
 	GameManager.catch_human(self)
 	return WORTH
-		

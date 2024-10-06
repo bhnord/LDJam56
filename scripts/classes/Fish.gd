@@ -7,6 +7,9 @@ var money = 0
 var upgrades = null
 var nearby_hooks: Array[Hook] = []
 
+func _ready() -> void:
+	$CanvasLayer/Money.text = "Coins: " + str(GameManager.money)
+	$CanvasLayer/Upgrades.text = "Fins: Level "+str(GameManager.fins) + "\nBooster: Level "+str(GameManager.booster)
 
 func _physics_process(delta: float) -> void:
 	var input_direction = Vector2(
@@ -39,6 +42,8 @@ func _process(_delta):
 		var hook = nearby_hooks.pop_front()
 		if hook:
 			hook.interact()
+	if Input.is_action_just_pressed("open_map"):
+		SceneManager.open_map()
 	
 	
 	

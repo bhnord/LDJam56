@@ -14,7 +14,6 @@ scale = Vector2(337.841, 337.841)
 color = Color(0.34, 0.314613, 0.2312, 1)
 
 [node name="Hooks" parent="." instance=ExtResource("1_cmv7e")]
-DIFFICULTY_LEVEL = 1
 
 [node name="Player" parent="." instance=ExtResource("2_giux4")]
 position = Vector2(577, 324)

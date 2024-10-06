@@ -27,9 +27,9 @@ var level_settings = {
 # SPAWN_CHANCE_RAMP_INTERVAL - 
 # SPAWN_CHANCE_MAX - 
 }
-
+var last_scene
 var MAX_LVL : int = 5
-
+var human_opponent: Human = null
 var money_day : int = 0
 var humans_caught : Array[Human] = []
 # Called when the node enters the scene tree for the first time.
@@ -38,7 +38,7 @@ func _ready() -> void:
 
 # use these to interact with money
 func add_money(amount : int) -> void:
-	money_day+=amount
+	money+=amount
 	
 func subtract_money(amount : int) -> void:
 	money = clamp(money-amount, 0, money)
@@ -47,7 +47,7 @@ func catch_human(human: Human):
 	money_day+=human.WORTH
 	humans_caught.append(human)
 
-	
+
 func end_day():
 	money += money_day
 	money_day = 0
@@ -65,3 +65,18 @@ func decrease_energy():
 	energy-=1
 	if energy <= 0:
 		SceneManager.switch_to_scene(SceneManager.Scene.END_OF_DAY)
+		
+func set_opponent(human: Human):
+	self.human_opponent = human
+	var level = human.LEVEL
+	level_settings = {
+	beat_spawn_speed =  .5 - (level-booster)*.1,
+	beat_spawn_speed_ramp_interval = 3.0,
+	beat_spawn_speed_ramp_amount = .3*(level-(booster*.5)),
+	beat_spawn_speed_min =  .2*level,
+	
+	spawn_chance = .6+(level*.1),
+	spawn_chance_ramp_interval = 10.0 / level,
+	spawn_chance_ramp_amount = .05*level,
+	spawn_chance_max = .9,
+	}

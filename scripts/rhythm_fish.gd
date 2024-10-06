@@ -8,7 +8,7 @@ var max_speed = 100.0  # Maximum speed in either direction
 
 var boost_foward = -60.0;
 # Knockback variables
-var knockback_strength = 700.0
+var knockback_strength = 700.0/(GameManager.mouth+1)
 var knockback_duration = 0.2
 var knockback_timer = 0.0
 
