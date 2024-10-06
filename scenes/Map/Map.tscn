@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck7xit4w37my4"]
+[gd_scene load_steps=5 format=3 uid="uid://ck7xit4w37my4"]
 
 [ext_resource type="PackedScene" uid="uid://p8whpufxdlmy" path="res://scenes/Map/map_location.tscn" id="1_6icf7"]
 [ext_resource type="Texture2D" uid="uid://dblndovm416g3" path="res://sprites/Map/map.png" id="1_de20k"]
+[ext_resource type="PackedScene" uid="uid://drlff6wnsjk73" path="res://scenes/bounds.tscn" id="1_yuw5u"]
 [ext_resource type="PackedScene" uid="uid://q1hv1bks0v6u" path="res://scenes/Map/player_map.tscn" id="2_a24cd"]
 
 [node name="Map" type="Node2D"]
 scale = Vector2(0.600715, 0.600307)
+
+[node name="Bounds" parent="." instance=ExtResource("1_yuw5u")]
 
 [node name="Map Picture" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -22,11 +25,13 @@ polygon = PackedVector2Array(-9.51526, 1.67741, -8.75908, 1.35621, -7.39375, 1.4
 
 [node name="Loc-Dock" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(1749.58, 394.798)
+loc_name = "Dock"
 
 [node name="Loc-Beach" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(747.443, 201.564)
 
 [node name="Loc-Ship" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(710.82, 852.897)
+loc_name = "Ship"
 
 [node name="Player-Map" parent="." instance=ExtResource("2_a24cd")]
