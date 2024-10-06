@@ -102,12 +102,11 @@ func set_opponent(human: Human):
 	beat_speed_ramp_amount = 5 - (level * .5),
 
 
-
 	# Every X seconds a beat will spawn
-	beat_spawn_speed =  .65 - (level * .12) + (booster * .05),
+	beat_spawn_speed =  .65 - (level * .12) + (fins * .05),
 	
 	# Every X seconds the beat spawn speed will increase
-	beat_spawn_speed_ramp_interval = 10.0 - (level * 2) - (booster * .05),
+	beat_spawn_speed_ramp_interval = 10.0 - (level * 2) - (fins * .05),
 	
 	# Beat spawn speed increases by X every ramp cycle
 	beat_spawn_speed_ramp_amount = .074 * level,
@@ -118,7 +117,7 @@ func set_opponent(human: Human):
 	
 	
 	# Every spawn attempt this is the chance
-	spawn_chance = .35 + (level * .1),
+	spawn_chance = .35 + (level * .12),
 	
 	#  Inceaase the spawn chance every X seconds
 	spawn_chance_ramp_interval = (10.0 - (level * 1.5)) + booster,
