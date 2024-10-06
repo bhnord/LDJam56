@@ -16,7 +16,10 @@ func switch_to_scene(scene:Scene):
 	call_deferred("_deferred_switch", scenes[scene])
 	
 func end_rhythm(win: bool):
-	GameManager.add_money(GameManager.human_opponent.WORTH)
+	if(win):
+		GameManager.add_money(GameManager.human_opponent.WORTH)
+	else:
+		GameManager.subtract_money((int)(.25 * GameManager.human_opponent.WORTH))
 	switch_to_scene(Scene.BEACH)
 	
 func _deferred_switch(res_path):
