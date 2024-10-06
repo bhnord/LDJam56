@@ -13,6 +13,7 @@ script = ExtResource("1_jh0ac")
 script = ExtResource("2_edscl")
 
 [node name="Sprite2D" type="Sprite2D" parent="CentralBeat"]
+scale = Vector2(0.96875, 0.96875)
 texture = ExtResource("3_ruafc")
 
 [node name="Fish" type="CharacterBody2D" parent="."]

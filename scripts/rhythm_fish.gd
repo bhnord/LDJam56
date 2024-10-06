@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const END_MARGIN = 80;
+
 # Movement variables
 var base_speed = -10.0  # Slight constant leftward movement
 var max_speed = 100.0  # Maximum speed in either direction
@@ -14,13 +16,26 @@ var knockback_timer = 0.0
 var screen_size
 
 func _ready():
-	screen_size = get_viewport_rect().size
 	get_tree().get_root().size_changed.connect(resize) 
 	resize()
+
+func is_game_over():
+	if is_at_win():
+		print("WIN")
+		SceneManager.end_rhythm(true)
+	elif is_at_loss():
+		SceneManager.end_rhythm(false)
+		print("LOSS")
 	
+func is_at_win():
+	return global_position.x <= -1 * screen_size.x/2.0 + END_MARGIN
+	
+func is_at_loss():
+	return global_position.x >= screen_size.x/2.0 - END_MARGIN
+
 func resize():
-	print("NEW SIZE", get_viewport_rect().size.y / 2.0)
-	position = Vector2(position.x, get_viewport_rect().size[1]/2)
+	screen_size = get_viewport_rect().size
+	position = Vector2(position.x, screen_size[1]/2)
 
 func _physics_process(delta):
 	if knockback_timer > 0:

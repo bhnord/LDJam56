@@ -3,12 +3,12 @@ extends Node2D
 var base_scale = Vector2(1.0, 1.0)
 var pulse_scale = Vector2(1.2, 1.2)
 var overshoot_scale = Vector2(0.9, 0.9)
-var detection_radius = 20
+var detection_radius = 10
 var current_tween: Tween
 var last_intensity = 0.0
 var beat_radius: float  # Radius of the central beat sprite 
 
-var base_color = Color(0.7, 0.7, 0.7, 1.0)  # Grayed-out white
+var base_color = Color(0.4, 0.4, 0.4, 1.0)  # Grayed-out white
 var lively_color = Color(1.0, 0.5, 0.0, 1.0)  # Vibrant orange
 
 func _ready():

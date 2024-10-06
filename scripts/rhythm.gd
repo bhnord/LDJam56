@@ -12,6 +12,7 @@ enum Action {
 # BETTER BEAT DETECTION AND GAMEPLAY
 # PROGRESS BAR - how close you are
 const HIT_ZONE_SIZE = 30;
+var beat_speed = 200;
 
 
 # RIGHT NOW 
@@ -44,6 +45,8 @@ func adjust_settings_by_upgrades(settings):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# This really just ends the game
+	$Fish.is_game_over()
 	
 	handle_beat_spawn(delta)
 	handle_beat_spawn_interval_ramp(delta)
@@ -64,11 +67,12 @@ func handle_beat_spawn(delta: float):
 func handle_beat_spawn_interval_ramp(delta: float):
 	spawn_beat_interval_ramp_timer += delta;
 	if spawn_beat_interval_ramp_timer > settings.beat_spawn_speed_ramp_interval:
-		var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
-		print("RAMPING UP SPEED - FROM:", settings.beat_spawn_speed, " TO:", new_spawn_speed)
-		settings.beat_spawn_speed = new_spawn_speed
+		#var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
+		#print("RAMPING UP SPEED - FROM:", settings.beat_spawn_speed, " TO:", new_spawn_speed)
+		#settings.beat_spawn_speed = new_spawn_speed
 		spawn_beat_interval_ramp_timer = 0.0
-		pass;
+		beat_speed += 100;
+		#pass;
 	pass;
 
 func handle_spawn_chance_interval_ramp(delta: float):
@@ -78,7 +82,6 @@ func handle_spawn_chance_interval_ramp(delta: float):
 		print("RAMPING SPAWN CHANCE - FROM:", settings.spawn_chance, " TO:", new_spawn_chance)
 		settings.spawn_chanced = new_spawn_chance
 		spawn_beat_interval_ramp_timer = 0.0
-		pass;
 	pass;
 
 func spawn_beats():
@@ -88,6 +91,7 @@ func spawn_beats():
 	
 func spawn_beat(left: bool):
 	var beat = beat_scene.instantiate()
+	beat.speed = beat_speed
 	beat.init(left)
 	beat.position = Vector2(0 if left else get_viewport().size.x, get_viewport_rect().size[1] - 50)
 	if left:
