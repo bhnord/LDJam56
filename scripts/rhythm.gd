@@ -12,8 +12,7 @@ enum Action {
 # BETTER BEAT DETECTION AND GAMEPLAY
 # PROGRESS BAR - how close you are
 const HIT_ZONE_SIZE = 30;
-var beat_speed = 200;
-
+var beat_speed = 200
 
 # RIGHT NOW 
 # This is dealing with two beats at the same time so the hits and mistakes are doubled
@@ -28,7 +27,6 @@ var spawn_beat_timer = 0.0
 var spawn_beat_interval_ramp_timer = 0.0
 var spawn_chance_interval_ramp_timer = 0.0
 
-var total_beats = 0;
 #Not using a basic score so we can tune line snapping and such
 var mistakes = 0;
 var hits = 0;
@@ -43,7 +41,6 @@ func _ready() -> void:
 func adjust_settings_by_upgrades(settings):
 	return settings
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# This really just ends the game
 	$Fish.is_game_over()
@@ -67,11 +64,12 @@ func handle_beat_spawn(delta: float):
 func handle_beat_spawn_interval_ramp(delta: float):
 	spawn_beat_interval_ramp_timer += delta;
 	if spawn_beat_interval_ramp_timer > settings.beat_spawn_speed_ramp_interval:
-		#var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
 		#print("RAMPING UP SPEED - FROM:", settings.beat_spawn_speed, " TO:", new_spawn_speed)
 		#settings.beat_spawn_speed = new_spawn_speed
+		var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
 		spawn_beat_interval_ramp_timer = 0.0
-		beat_speed += 100;
+		beat_speed += 20
+		settings.beat_spawn_speed = new_spawn_speed;
 		#pass;
 	pass;
 
@@ -85,7 +83,6 @@ func handle_spawn_chance_interval_ramp(delta: float):
 	pass;
 
 func spawn_beats():
-	total_beats += 2 #TODO This is set to two to justify the double hits and misses issue	
 	spawn_beat(true)
 	spawn_beat(false)
 	
