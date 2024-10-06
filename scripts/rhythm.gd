@@ -12,7 +12,6 @@ enum Action {
 # BETTER BEAT DETECTION AND GAMEPLAY
 # PROGRESS BAR - how close you are
 const HIT_ZONE_SIZE = 30;
-var beat_speed = 200
 
 # RIGHT NOW 
 # This is dealing with two beats at the same time so the hits and mistakes are doubled
