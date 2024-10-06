@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://dmmlqrcgpu1u6"]
+[gd_scene load_steps=3 format=3 uid="uid://dmmlqrcgpu1u6"]
+
+[ext_resource type="PackedScene" uid="uid://dfonpmtdtv4xx" path="res://other/hooks.tscn" id="1_8jict"]
+[ext_resource type="PackedScene" uid="uid://dpvlu3o4haytq" path="res://sprites/player.tscn" id="2_ro6of"]
 
 [node name="Beach" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -5984.0
+offset_top = -5508.0
+offset_right = -5944.0
+offset_bottom = -5468.0
+scale = Vector2(337.841, 337.841)
+color = Color(0.68494, 0.69, 0.5382, 1)
+
+[node name="Hooks" parent="." instance=ExtResource("1_8jict")]
+NUM_HOOKS = 8
+
+[node name="Player" parent="." instance=ExtResource("2_ro6of")]
+position = Vector2(577, 321)

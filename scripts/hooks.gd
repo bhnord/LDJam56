@@ -2,7 +2,10 @@ extends Node
 
 
 
-var NUM_HOOKS = 10
+@export var NUM_HOOKS = 10
+@export var DIFFICULTY_LEVEL = 0
+@export var MIN_MONEY = 10
+@export var MAX_MONEY = 40
 var hooks_at = []
 var hook = preload("res://sprites/hook.tscn")
 
@@ -23,7 +26,6 @@ func _process(delta: float) -> void:
 		#wait=0
 		#_add_random_hook()
 
-
 func spawn_hooks()->void:
 	for i in range(NUM_HOOKS):
 		_add_random_hook()
@@ -32,7 +34,6 @@ func spawn_hooks()->void:
 #TODO: Fine tune mod to fit into screen
 func _get_rand_in_bounds()->int:
 	return (randi()%100)*10
-
 
 func _add_random_hook():
 	var x = _get_rand_in_bounds()
@@ -45,7 +46,8 @@ func _add_random_hook():
 	
 
 func _add_hook(x:int,y:int)->void:
-	var object = hook.instantiate()
+	var object: Hook = hook.instantiate()
+	object.human = Human.create(DIFFICULTY_LEVEL)
 	call_deferred("add_child", object)
 	object.global_position=Vector2(x,y)
 	pass
