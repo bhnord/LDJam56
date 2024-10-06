@@ -14,7 +14,7 @@ var knockback_timer = 0.0
 
 # Screen boundaries
 var screen_size
-
+#
 func _ready():
 	get_tree().get_root().size_changed.connect(resize) 
 	resize()
