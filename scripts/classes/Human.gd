@@ -19,7 +19,7 @@ func calc_params():
 	SIZEF = randi() % 4 + (LEVEL + 1) #4ft to 8ft
 	SIZEI = randi() % 13 #inches
 	PULL_LVL = (randi() % GameManager.MAX_LVL+1)
-	WORTH = (WEIGHT+(SIZEF*10))*PULL_LVL / 100
+	WORTH = ((randi()%10)+4)*LEVEL
 	
 	
 #if they can't pull in, give 1/4 of money
