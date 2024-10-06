@@ -8,8 +8,6 @@ radius = 67.2681
 
 [node name="MapLocation" type="Area2D"]
 script = ExtResource("1_34f74")
-loc_name = null
-switchTo = null
 
 [node name="Location" type="Sprite2D" parent="."]
 scale = Vector2(0.316327, 0.306122)
