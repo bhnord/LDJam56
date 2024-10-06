@@ -3,7 +3,7 @@ extends Node
 var current_scene = null
 
 enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP}
-var scenes = ["res://scenes/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn"]
+var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn"]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -16,7 +16,7 @@ func switch_to_scene(scene:Scene):
 	call_deferred("_deferred_switch", scenes[scene])
 	
 func end_rhythm(win: bool):
-	pass
+	switch_to_scene(Scene.BEACH)
 	
 	
 func _deferred_switch(res_path):
