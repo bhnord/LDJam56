@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu8cdyxxxfrus"]
+[gd_scene load_steps=4 format=3 uid="uid://bu8cdyxxxfrus"]
 
 [ext_resource type="Script" path="res://scripts/classes/Hook.gd" id="1_5ek4n"]
+[ext_resource type="Texture2D" uid="uid://dpice3h737di4" path="res://sprites/hook_top.png" id="2_lmrl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox5g2"]
-size = Vector2(21.6018, 62.3193)
+size = Vector2(21.6162, 62.3193)
 
 [node name="Hook" type="Area2D"]
 scale = Vector2(3.75928, 3.73073)
@@ -11,10 +12,17 @@ script = ExtResource("1_5ek4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.0451248, 5.2831e-07)
-scale = Vector2(0.521026, -0.182052)
+scale = Vector2(0.516757, -0.342879)
 shape = SubResource("RectangleShape2D_ox5g2")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.0114411, -0.0175285)
+texture = ExtResource("2_lmrl1")
+flip_h = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -6.0
 offset_top = -6.0
 offset_right = 34.0
