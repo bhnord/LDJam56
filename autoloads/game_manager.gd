@@ -27,7 +27,7 @@ var level_settings = {
 # SPAWN_CHANCE_RAMP_INTERVAL - 
 # SPAWN_CHANCE_MAX - 
 }
-
+var last_scene
 var MAX_LVL : int = 5
 var human_opponent = null
 var money_day : int = 0

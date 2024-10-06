@@ -39,6 +39,8 @@ func _process(_delta):
 		var hook = nearby_hooks.pop_front()
 		if hook:
 			hook.interact()
+	if Input.is_action_just_pressed("open_map"):
+		SceneManager.open_map()
 	
 	
 	
