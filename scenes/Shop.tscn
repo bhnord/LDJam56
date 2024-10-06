@@ -30,10 +30,10 @@ offset_bottom = 65.0
 text = "$: 0"
 
 [node name="Booster" type="Button" parent="."]
-offset_left = 71.0
-offset_top = 136.0
-offset_right = 217.0
-offset_bottom = 168.0
+offset_left = 32.0
+offset_top = 109.0
+offset_right = 178.0
+offset_bottom = 141.0
 text = "Purchase Booster
 "
 
@@ -45,35 +45,59 @@ offset_right = 117.0
 offset_bottom = -7.0
 text = "Booster Cost:"
 
+[node name="BoosterCost2" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 161.0
+offset_right = 258.0
+offset_bottom = 210.0
+text = "Booster reduces the speed of
+the beats"
+
 [node name="ReinforcedMouth" type="Button" parent="."]
-offset_left = 60.0
-offset_top = 508.0
-offset_right = 283.0
-offset_bottom = 539.0
-text = "Purchase Reinforced Mouth"
+offset_left = 29.0
+offset_top = 470.0
+offset_right = 252.0
+offset_bottom = 501.0
+text = "Purchase Reinforced Lips"
 
 [node name="ReinforcedMouthCost" type="Label" parent="ReinforcedMouth"]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 4.0
 offset_top = -28.0
-offset_right = 189.0
+offset_right = 190.0
 offset_bottom = -5.0
-text = "Reinforced Mouth Cost: "
+text = "Reinforced Lips Cost: "
+
+[node name="ReinforcedMouthCost2" type="Label" parent="."]
+offset_left = 23.0
+offset_top = 526.0
+offset_right = 331.0
+offset_bottom = 575.0
+text = "Reinforced lips reduces the amount you
+are pulled back if you miss a beat"
 
 [node name="Fins" type="Button" parent="."]
-offset_left = 69.0
-offset_top = 328.0
-offset_right = 219.0
-offset_bottom = 359.0
-text = "Purchase Fins"
+offset_left = 32.0
+offset_top = 265.0
+offset_right = 182.0
+offset_bottom = 296.0
+text = "Purchase Upgraded Fins"
 
 [node name="FinsCost" type="Label" parent="Fins"]
 layout_mode = 0
-offset_left = 3.0
-offset_top = -40.0
-offset_right = 195.0
-offset_bottom = -17.0
+offset_left = -1.0
+offset_top = -26.0
+offset_right = 191.0
+offset_bottom = -3.0
 text = "Fins Cost: "
+
+[node name="FinsCost2" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 307.0
+offset_right = 228.0
+offset_bottom = 330.0
+text = "Upgraded fins reduces the amount 
+of beats that are spawned"
 
 [node name="textBubble" type="TextureRect" parent="."]
 visible = false
@@ -91,14 +115,6 @@ offset_right = 684.0
 offset_bottom = 105.0
 rotation = -0.000291896
 
-[node name="NextDay" type="Button" parent="."]
-offset_left = 1022.0
-offset_top = 601.0
-offset_right = 1101.0
-offset_bottom = 632.0
-text = "Exit"
-
 [connection signal="pressed" from="Booster" to="." method="_on_booster_pressed"]
 [connection signal="pressed" from="ReinforcedMouth" to="." method="_on_mouth_pressed"]
 [connection signal="pressed" from="Fins" to="." method="_on_fins_pressed"]
-[connection signal="pressed" from="NextDay" to="." method="_on_next_day_pressed"]

@@ -43,9 +43,9 @@ func setLabelText(text: String):
 func update_label() -> void:
 	$Money.text = "$" + str(GameManager.money)
 	$Booster.text = "Purchase: Booster Lvl." + str(GameManager.booster)
-	$Fins.text = "Purchase: Fins Lvl." + str(GameManager.fins)
-	$ReinforcedMouth.text = "Purchase: Reinforced Mouth Lvl." + str(GameManager.mouth)
+	$Fins.text = "Purchase: Upgraded Fins Lvl." + str(GameManager.fins)
+	$ReinforcedMouth.text = "Purchase: Reinforced Lips Lvl." + str(GameManager.mouth)
 	$Booster/BoosterCost.text = "Booster Cost: $" + str(get_upgrade_cost(GameManager.booster))
 	$Fins/FinsCost.text = "Fins Cost: $" + str(get_upgrade_cost(GameManager.fins))
-	$ReinforcedMouth/ReinforcedMouthCost.text = "Reinforced Mouth Cost: $" + str(get_upgrade_cost(GameManager.mouth))
+	$ReinforcedMouth/ReinforcedMouthCost.text = "Reinforced Lips Cost: $" + str(get_upgrade_cost(GameManager.mouth))
 	setLabelText("")
