@@ -18,7 +18,6 @@ func switch_to_scene(scene:Scene):
 func end_rhythm(win: bool):
 	switch_to_scene(Scene.BEACH)
 	
-	
 func _deferred_switch(res_path):
 	current_scene.free()
 	var new_s = load(res_path)

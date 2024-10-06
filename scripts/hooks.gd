@@ -3,7 +3,7 @@ extends Node
 
 
 @export var NUM_HOOKS = 10
-@export var DIFFICULTY_LEVEL = 0
+@export var DIFFICULTY_LEVEL: int
 @export var MIN_MONEY = 10
 @export var MAX_MONEY = 40
 var hooks_at = []
@@ -11,7 +11,7 @@ var hook = preload("res://sprites/hook.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-
+	print("difficulty: " + str(DIFFICULTY_LEVEL))
 	spawn_hooks()
 
 

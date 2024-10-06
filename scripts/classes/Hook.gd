@@ -5,6 +5,7 @@ var TYPE = randi() % 10
 var human: Human = null
  
 func interact():
+	GameManager.set_opponent(human)
 	SceneManager.switch_to_scene(SceneManager.Scene.PULLING_ROD)
 
 
