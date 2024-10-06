@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmmlqrcgpu1u6"]
 
 [ext_resource type="PackedScene" uid="uid://dfonpmtdtv4xx" path="res://other/hooks.tscn" id="1_8jict"]
-[ext_resource type="PackedScene" path="res://scenes/bounds.tscn" id="2_7v7qi"]
+[ext_resource type="PackedScene" uid="uid://drlff6wnsjk73" path="res://scenes/bounds.tscn" id="2_7v7qi"]
 [ext_resource type="PackedScene" uid="uid://dpvlu3o4haytq" path="res://sprites/player.tscn" id="2_ro6of"]
 [ext_resource type="Texture2D" uid="uid://dj3yofv58lc3p" path="res://assets/beach.png" id="4_snt8l"]
 

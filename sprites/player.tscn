@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dpvlu3o4haytq"]
+[gd_scene load_steps=6 format=3 uid="uid://dpvlu3o4haytq"]
 
 [ext_resource type="Script" path="res://scripts/classes/Fish.gd" id="1_wvqht"]
 [ext_resource type="Texture2D" uid="uid://g61fm4n2dfnr" path="res://assets/fish side.png" id="2_ckh7r"]
+[ext_resource type="PackedScene" uid="uid://3uwwh8e55gqk" path="res://Controls and Money.tscn" id="2_w8cy8"]
 [ext_resource type="Texture2D" uid="uid://chfn1iwfgji77" path="res://assets/fish top.png" id="3_a76a1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_t4hy0"]
@@ -9,25 +10,7 @@
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_wvqht")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_top = 16.0
-offset_right = 174.0
-offset_bottom = 151.0
-color = Color(0, 0, 0, 0.690196)
-
-[node name="Money" type="Label" parent="CanvasLayer"]
-offset_left = 27.0
-offset_top = 30.0
-offset_right = 67.0
-offset_bottom = 53.0
-
-[node name="Upgrades" type="Label" parent="CanvasLayer"]
-offset_left = 24.0
-offset_top = 87.0
-offset_right = 64.0
-offset_bottom = 110.0
+[node name="CanvasLayer" parent="." instance=ExtResource("2_w8cy8")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -37,6 +20,7 @@ scale = Vector2(4.84341, 4.84341)
 shape = SubResource("CircleShape2D_t4hy0")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 30.0
@@ -50,6 +34,12 @@ limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
 limit_smoothed = true
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3.50449, 3.63612)
+color = Color(0.241156, 0.241156, 0.241156, 1)
 
 [node name="FishSide" type="Sprite2D" parent="."]
 position = Vector2(1, 1)
