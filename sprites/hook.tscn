@@ -6,7 +6,7 @@
 size = Vector2(21.6018, 62.3193)
 
 [node name="Hook" type="Area2D"]
-scale = Vector2(3.75928, 3.75928)
+scale = Vector2(3.75928, 3.73073)
 script = ExtResource("1_5ek4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

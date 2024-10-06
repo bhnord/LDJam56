@@ -6,14 +6,6 @@
 
 [node name="Beach" type="Node2D"]
 
-[node name="Bounds" parent="." instance=ExtResource("2_7v7qi")]
-
-[node name="Hooks" parent="." instance=ExtResource("1_8jict")]
-NUM_HOOKS = 8
-
-[node name="Player" parent="." instance=ExtResource("2_ro6of")]
-position = Vector2(577, 321)
-
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -5984.0
 offset_top = -5508.0
@@ -21,3 +13,11 @@ offset_right = -5944.0
 offset_bottom = -5468.0
 scale = Vector2(337.841, 337.841)
 color = Color(0.72, 0.64944, 0.4176, 1)
+
+[node name="Bounds" parent="." instance=ExtResource("2_7v7qi")]
+
+[node name="Hooks" parent="." instance=ExtResource("1_8jict")]
+NUM_HOOKS = 8
+
+[node name="Player" parent="." instance=ExtResource("2_ro6of")]
+position = Vector2(577, 321)
