@@ -50,7 +50,3 @@ func toggle_shop():
 	else:
 		shop_open = false
 		call_deferred("_deferred_switch", shop_last_scene)
-	
-	
-		
-	
