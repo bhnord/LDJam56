@@ -11,6 +11,12 @@ script = ExtResource("1_wvqht")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_top = 16.0
+offset_right = 174.0
+offset_bottom = 151.0
+color = Color(0, 0, 0, 0.690196)
+
 [node name="Money" type="Label" parent="CanvasLayer"]
 offset_left = 27.0
 offset_top = 30.0
