@@ -38,7 +38,7 @@ func _ready() -> void:
 
 # use these to interact with money
 func add_money(amount : int) -> void:
-	money_day+=amount
+	money+=amount
 	
 func subtract_money(amount : int) -> void:
 	money = clamp(money-amount, 0, money)
