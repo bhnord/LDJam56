@@ -7,7 +7,7 @@ var loc_close: MapLocation = null
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("bite_hook"):
 		print("Accept Command")
 		if(loc_close != null):
 			print("loc is " + loc_close.name)
