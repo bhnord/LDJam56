@@ -12,9 +12,16 @@ var base_color = Color(0.7, 0.7, 0.7, 1.0)  # Grayed-out white
 var lively_color = Color(1.0, 0.5, 0.0, 1.0)  # Vibrant orange
 
 func _ready():
-	# Assuming the Sprite2D is circular. Adjust if it's not.
+	resize()
+	z_index = 10;
 	beat_radius = $Sprite2D.texture.get_width() * scale.x / 2
 	$Sprite2D.modulate = base_color
+	get_tree().get_root().size_changed.connect(resize) 
+	
+
+func resize():
+	position = Vector2(get_viewport().get_visible_rect().size.x / 2, get_viewport_rect().size[1] - 50)
+
 
 func _process(delta: float) -> void:
 	var intensity = check_for_nearby_beats()

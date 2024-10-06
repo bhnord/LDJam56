@@ -19,6 +19,6 @@ texture = ExtResource("3_ruafc")
 script = ExtResource("5_dfhau")
 
 [node name="FishSprite" type="Sprite2D" parent="Fish"]
-position = Vector2(562, 0)
+position = Vector2(585, 321)
 scale = Vector2(0.249181, 0.43299)
 texture = ExtResource("4_h1kwj")

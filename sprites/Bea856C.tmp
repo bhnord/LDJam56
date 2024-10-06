@@ -27,15 +27,15 @@ func resize():
 	var new_viewport_size = get_viewport_rect().size
 	var old_center = old_viewport_size / 2
 	var new_center = new_viewport_size / 2
-	
-	# Calculate the offset from the old center
+    
+    # Calculate the offset from the old center
 	var offset = position - old_center
-	
-	# Update the position, maintaining the same offset from the new center
+    
+    # Update the position, maintaining the same offset from the new center
 	position = Vector2(new_center.x + offset.x, new_viewport_size.y - 50)
-	
-	# Update the target position
-	target_position = Vector2(new_center.x, new_viewport_size.y - 50)
+    
+    # Update the target position
+    target_position = Vector2(new_center.x, new_viewport_size.y - 50)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -15,6 +15,12 @@ var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
+	get_tree().get_root().size_changed.connect(resize) 
+	resize()
+	
+func resize():
+	print("NEW SIZE", get_viewport_rect().size.y / 2.0)
+	position = Vector2(position.x, get_viewport_rect().size[1]/2)
 
 func _physics_process(delta):
 	if knockback_timer > 0:

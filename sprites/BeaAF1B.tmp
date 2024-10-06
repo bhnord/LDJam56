@@ -17,25 +17,14 @@ func init(is_i: bool):
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().get_root().size_changed.connect(resize) 
-	target_position = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50)
+    get_tree().get_root().size_changed.connect(resize) 
+	resize()
 	add_to_group(\"beats\" if is_indicator else \"hidden_beats\")
 
 
 func resize():
-	var old_viewport_size = Vector2(target_position.x * 2, get_viewport_rect().size.y)
-	var new_viewport_size = get_viewport_rect().size
-	var old_center = old_viewport_size / 2
-	var new_center = new_viewport_size / 2
-	
-	# Calculate the offset from the old center
-	var offset = position - old_center
-	
-	# Update the position, maintaining the same offset from the new center
-	position = Vector2(new_center.x + offset.x, new_viewport_size.y - 50)
-	
-	# Update the target position
-	target_position = Vector2(new_center.x, new_viewport_size.y - 50)
+	position = Vector2(position.x, get_viewport_rect().size[1] - 50)
+	target_position = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

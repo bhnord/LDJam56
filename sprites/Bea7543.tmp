@@ -21,7 +21,6 @@ func _ready() -> void:
 	target_position = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50)
 	add_to_group(\"beats\" if is_indicator else \"hidden_beats\")
 
-
 func resize():
 	var old_viewport_size = Vector2(target_position.x * 2, get_viewport_rect().size.y)
 	var new_viewport_size = get_viewport_rect().size

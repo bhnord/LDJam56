@@ -7,14 +7,9 @@ enum Action {
 }
 
 # TODO
-# BEAT_SPEED_INITIAL - Inital 
-# BEAT_SPEED_RAMP_INTERVAL - How often to ramp up the speed
-# BEAT_SPEED_MAX
-
-# SPAWN_CHANCE - How often beats spawn
-# SPAWN_CHANCE_RAMP_INTERVAL - 
-# SPAWN_CHANCE_MAX - 
-
+# LOSING SCREEN
+# WINNING SCREEN
+# BETTER BEAT DETECTION AND GAMEPLAY
 # PROGRESS BAR - how close you are
 const HIT_ZONE_SIZE = 30;
 
@@ -42,16 +37,10 @@ var settings;
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	settings = adjust_settings_by_upgrades(GameManager.level_settings)
-	setup_central_beat()
 
 #TODO
 func adjust_settings_by_upgrades(settings):
 	return settings
-
-func setup_central_beat():
-	$CentralBeat.position = Vector2(get_viewport().get_visible_rect().size.x / 2, get_viewport_rect().size[1] - 50)
-	$CentralBeat.z_index = 10;
-	# add_child($CentralBeat)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
