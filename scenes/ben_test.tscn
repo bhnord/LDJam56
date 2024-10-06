@@ -1,11 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1u5msjgbihyj"]
+[gd_scene load_steps=7 format=3 uid="uid://c1u5msjgbihyj"]
 
+[ext_resource type="Texture2D" uid="uid://buwnke2xs21vx" path="res://sprites/Underwater Beach.png" id="1_d0aos"]
 [ext_resource type="PackedScene" uid="uid://dpvlu3o4haytq" path="res://sprites/player.tscn" id="1_ywjba"]
 [ext_resource type="PackedScene" uid="uid://dfonpmtdtv4xx" path="res://other/hooks.tscn" id="2_gjf3u"]
 
-[node name="BenTest" type="Node2D"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_30u1u"]
+a = Vector2(-991.241, -544.926)
+b = Vector2(758.649, -542.889)
 
-[node name="Player" parent="." instance=ExtResource("1_ywjba")]
-position = Vector2(671, 298)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_an3rn"]
+a = Vector2(1110.26, 436.959)
+b = Vector2(-639.628, 436.959)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m4yao"]
+a = Vector2(755.015, -543.907)
+b = Vector2(755.923, 550.019)
+
+[node name="Underwater" type="Node2D"]
+
+[node name="Underwater" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_d0aos")
 
 [node name="Hooks" parent="." instance=ExtResource("2_gjf3u")]
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+
+[node name="Up" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(831, 537)
+rotation = -3.14159
+scale = Vector2(1.10064, -0.981785)
+shape = SubResource("SegmentShape2D_30u1u")
+
+[node name="Down" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(1221, 651)
+rotation = -3.14159
+scale = Vector2(1.10064, -0.981785)
+shape = SubResource("SegmentShape2D_an3rn")
+
+[node name="Left" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(831, 537)
+rotation = -3.14159
+scale = Vector2(1.10064, -0.981785)
+shape = SubResource("SegmentShape2D_m4yao")
+
+[node name="Right" type="CollisionShape2D" parent="Bounds"]
+position = Vector2(2750, 542)
+rotation = -3.14159
+scale = Vector2(1.10064, -0.981785)
+shape = SubResource("SegmentShape2D_m4yao")
+
+[node name="Player" parent="." instance=ExtResource("1_ywjba")]
+position = Vector2(851, 484)
+motion_mode = 1
+move_speed = 150.0
