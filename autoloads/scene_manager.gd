@@ -2,8 +2,8 @@ extends Node
 
 var current_scene = null
 var curr_scene_path = ""
-enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP, BOAT, PIER}
-var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn", "res://scenes/Boat.tscn", "res://scenes/Pier.tscn"]
+enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP, BOAT, PIER, CATCH_HUMAN_CUTSCENE}
+var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn", "res://scenes/Boat.tscn", "res://scenes/Pier.tscn", "res://scenes/CatchHuman.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var root = get_tree().root
@@ -18,9 +18,14 @@ func switch_to_scene(scene:Scene):
 func end_rhythm(win: bool):
 	if(win):
 		GameManager.add_money(GameManager.human_opponent.WORTH)
+		switch_to_scene(Scene.CATCH_HUMAN_CUTSCENE)
 	else:
 		GameManager.subtract_money((int)(.25 * GameManager.human_opponent.WORTH))
-	call_deferred("_deferred_switch",last_rhythm_scene)
+		#TODO FAIL ANIMATION
+		call_deferred("_deferred_switch", last_rhythm_scene)
+		
+func end_win_animation():
+	call_deferred("_deferred_switch", last_rhythm_scene)
 	
 func _deferred_switch(res_path):
 	current_scene.free()

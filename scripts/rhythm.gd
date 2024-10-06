@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 	handle_beat_spawn(delta)
 	handle_beat_spawn_interval_ramp(delta)
 	handle_spawn_chance_interval_ramp(delta)
+	# handle_beat_speed_interval_ramp(delta)
 		
 	if Input.is_action_just_pressed("rhythm_key"):
 		check_hit()
@@ -59,7 +60,6 @@ func handle_beat_spawn(delta: float):
 			spawn_beats();
 
 		spawn_beat_timer = 0.0
-		pass;
 	
 func handle_beat_spawn_interval_ramp(delta: float):
 	spawn_beat_interval_ramp_timer += delta;
@@ -68,10 +68,8 @@ func handle_beat_spawn_interval_ramp(delta: float):
 		#settings.beat_spawn_speed = new_spawn_speed
 		var new_spawn_speed = max(settings.beat_spawn_speed - settings.beat_spawn_speed_ramp_amount, settings.beat_spawn_speed_min);
 		spawn_beat_interval_ramp_timer = 0.0
-		beat_speed += 20
+		# beat_speed += 10
 		settings.beat_spawn_speed = new_spawn_speed;
-		#pass;
-	pass;
 
 func handle_spawn_chance_interval_ramp(delta: float):
 	spawn_chance_interval_ramp_timer += delta;
@@ -88,7 +86,7 @@ func spawn_beats():
 	
 func spawn_beat(left: bool):
 	var beat = beat_scene.instantiate()
-	beat.speed = beat_speed
+	beat.speed = settings.beat_speed;
 	beat.init(left)
 	beat.position = Vector2(0 if left else get_viewport().size.x, get_viewport_rect().size[1] - 50)
 	if left:

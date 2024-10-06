@@ -7,12 +7,10 @@ var SIZEF: int
 var SIZEI: int
 var PULL_LVL: int
 var WORTH: int
-var TEXTURE: String
 
 static func create(level:int):
 	var instance = Human.new()
 	instance.LEVEL = level
-	instance.TEXTURE = "res://sprites/fishmen/fishmen_1.png"
 	instance.calc_params()
 	return instance
 

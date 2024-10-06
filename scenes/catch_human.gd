@@ -1,22 +1,27 @@
 extends Node2D
 
-
-var START_GRACE = 2;
-var start_timer = 0;
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	start_timer += delta;
-	
-	if(delta > START_GRACE):
-		rotate(delta)
+	if not GameManager.human_opponent:
+		print("NO HUMAN OPPONENT DEFAULTING MODEL")
+		$CanvasLayer/HBoxContainer/Control/Fisherman.texture = load("res://sprites/fishmen/fishman_1.png")
+	else:
+		var texture_path = "res://sprites/fishmen/fishman_1.png"
 		
+		match GameManager.human_opponent.PULL_LVL:
+			0, 1, 2:
+				texture_path = "res://sprites/fishmen/fishman_1.png"
+			_:
+				texture_path = "res://sprites/fishmen/fishman_1.png"
+
+		$CanvasLayer/HBoxContainer/Control/Fisherman.texture = load(texture_path)
+	
+	var animation_player = $CanvasLayer/HBoxContainer/Control/Fisherman/AnimationPlayer
+	animation_player.connect("animation_finished", _on_animation_finished)
+	animation_player.play("plop")
+	
+
+func _process(delta: float) -> void:
 	pass
 
-#
-#func rotate(delta):
-	#rotation
+func _on_animation_finished(anim_name: String) -> void:
+	SceneManager.end_win_animation()
