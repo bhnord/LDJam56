@@ -33,8 +33,8 @@ func is_game_over():
 func setSettings():
 	var level = GameManager.human_opponent.LEVEL
 	var fins = GameManager.fins
-	knockback_strength = ((700.0/(GameManager.mouth+1)) * (1.25 * level))
-	boost_foward = (-60.0 + (12.0 * level) + (fins * 4.0))
+	knockback_strength = ((700.0/(GameManager.mouth+1)) * (1.55 * level))
+	boost_foward = (-60.0 + (21.0 * level) + (fins * 4.0))
 	max_speed = 75 + (fins * 6)
 	base_speed = -10 + level
 	

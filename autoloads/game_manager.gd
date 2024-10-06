@@ -90,26 +90,26 @@ func set_opponent(human: Human):
 	level_settings = {
 		
 	# Pixels per second of beat moving
-	beat_speed = 200 + (50 * level) - (booster * 15),
+	beat_speed = 300 + (75 * level) - (booster * 15),
 	
 	# The max speed
-	beat_speed_max = 500 + (75 * level) - (booster * 20),
+	beat_speed_max = 600 + (150 * level) - (booster * 20),
 	
 	# Every x seconds the beat speed will increase
-	beat_speed_ramp_interval = 1.0 * (level * 2) - (booster * .11),
+	beat_speed_ramp_interval = 1.25 + (level * 2) - (booster * .11),
 	
 	# Beat speed increases by X every ramp cycle
 	beat_speed_ramp_amount = 5 - (level * .5),
 
 
 	# Every X seconds a beat will spawn
-	beat_spawn_speed =  .65 - (level * .12) + (fins * .05),
+	beat_spawn_speed =  .50 - (level * .08) + (fins * .05),
 	
 	# Every X seconds the beat spawn speed will increase
 	beat_spawn_speed_ramp_interval = 10.0 - (level * 2) - (fins * .05),
 	
 	# Beat spawn speed increases by X every ramp cycle
-	beat_spawn_speed_ramp_amount = .074 * level,
+	beat_spawn_speed_ramp_amount = .009 * level,
 	
 	# The min bound for beats spawned
 	beat_spawn_speed_min =  .1,
@@ -117,7 +117,7 @@ func set_opponent(human: Human):
 	
 	
 	# Every spawn attempt this is the chance
-	spawn_chance = .35 + (level * .12),
+	spawn_chance = .25 + (level * .12) - (fins * .07),
 	
 	#  Inceaase the spawn chance every X seconds
 	spawn_chance_ramp_interval = (10.0 - (level * 1.5)) + booster,
