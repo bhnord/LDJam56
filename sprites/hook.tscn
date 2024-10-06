@@ -1,26 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu8cdyxxxfrus"]
+[gd_scene load_steps=3 format=3 uid="uid://bu8cdyxxxfrus"]
 
 [ext_resource type="Script" path="res://scripts/classes/Hook.gd" id="1_5ek4n"]
-[ext_resource type="Texture2D" uid="uid://ga56arh1ggu0" path="res://sprites/hook.png" id="2_gyrtf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ox5g2"]
-size = Vector2(21.4286, 57.4118)
+size = Vector2(21.6018, 62.3193)
 
 [node name="Hook" type="Area2D"]
+scale = Vector2(3.75928, 3.75928)
 script = ExtResource("1_5ek4n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(19.5, 17.5)
-scale = Vector2(2.2, -1.1039)
+position = Vector2(-0.0451248, 5.2831e-07)
+scale = Vector2(0.521026, -0.182052)
 shape = SubResource("RectangleShape2D_ox5g2")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -18.0
-offset_top = -25.0
-offset_right = 182.0
-offset_bottom = 175.0
-scale = Vector2(0.415899, 0.371496)
-texture = ExtResource("2_gyrtf")
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 34.0
+offset_bottom = 34.0
+scale = Vector2(0.294029, 0.294029)
+color = Color(0.700603, 0.0954556, 0.0585918, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

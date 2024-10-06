@@ -1,7 +1,7 @@
 extends Node
 class_name Human
 
-var LEVEL = 0
+var LEVEL = 1
 var WEIGHT:int
 var SIZEF: int
 var SIZEI: int
@@ -15,7 +15,7 @@ static func create(level:int):
 	return instance
 
 func calc_params():
-	WEIGHT = randi()%(LEVEL * 100) + 100 #100lb to 400lb
+	WEIGHT = randi() % 100 + LEVEL*100 #100lb to 400lb
 	SIZEF = randi() % 4 + (LEVEL + 1) #4ft to 8ft
 	SIZEI = randi() % 13 #inches
 	PULL_LVL = (randi() % GameManager.MAX_LVL+1)
