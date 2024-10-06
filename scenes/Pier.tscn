@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b371ulhulb04j" path="res://sprites/pier.png" id="1_8csjp"]
 [ext_resource type="PackedScene" uid="uid://dfonpmtdtv4xx" path="res://other/hooks.tscn" id="1_cmv7e"]
 [ext_resource type="PackedScene" uid="uid://dpvlu3o4haytq" path="res://sprites/player.tscn" id="2_giux4"]
-[ext_resource type="PackedScene" uid="uid://drlff6wnsjk73" path="res://scenes/bounds.tscn" id="4_1lx6v"]
+[ext_resource type="PackedScene" path="res://scenes/bounds.tscn" id="4_1lx6v"]
 
 [node name="Pier" type="Node2D"]
 
