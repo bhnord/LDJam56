@@ -26,6 +26,7 @@ polygon = PackedVector2Array(-9.51526, 1.67741, -8.75908, 1.35621, -7.39375, 1.4
 [node name="Loc-Dock" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(1749.58, 394.798)
 loc_name = "Dock"
+switchTo = 5
 
 [node name="Loc-Beach" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(747.443, 201.564)
@@ -33,5 +34,6 @@ position = Vector2(747.443, 201.564)
 [node name="Loc-Ship" parent="." instance=ExtResource("1_6icf7")]
 position = Vector2(710.82, 852.897)
 loc_name = "Ship"
+switchTo = 4
 
 [node name="Player-Map" parent="." instance=ExtResource("2_a24cd")]
