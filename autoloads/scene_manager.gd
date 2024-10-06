@@ -2,8 +2,8 @@ extends Node
 
 var current_scene = null
 var curr_scene_path = ""
-enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP, BOAT, PIER, CATCH_HUMAN_CUTSCENE}
-var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn", "res://scenes/Boat.tscn", "res://scenes/Pier.tscn", "res://scenes/CatchHuman.tscn"]
+enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP, BOAT, PIER, CATCH_HUMAN_CUTSCENE,MAP}
+var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn", "res://scenes/Boat.tscn", "res://scenes/Pier.tscn", "res://scenes/CatchHuman.tscn","res://scenes/Map/Map.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var root = get_tree().root
