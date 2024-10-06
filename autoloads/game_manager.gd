@@ -29,7 +29,7 @@ var level_settings = {
 }
 
 var MAX_LVL : int = 5
-var human_opponent = null
+var human_opponent: Human = null
 var money_day : int = 0
 var humans_caught : Array[Human] = []
 # Called when the node enters the scene tree for the first time.
