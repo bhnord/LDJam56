@@ -1,23 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://itvkw7hj76gi"]
+[gd_scene load_steps=4 format=3 uid="uid://itvkw7hj76gi"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_fu73o"]
+[ext_resource type="Texture2D" uid="uid://by6prga6cevd7" path="res://sprites/Shop.png" id="2_nuvov"]
+[ext_resource type="Texture2D" uid="uid://uorjslda7pjs" path="res://sprites/textBubble.png" id="3_8b427"]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_fu73o")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1.0
+offset_top = 4.0
+offset_right = 1921.0
+offset_bottom = 1084.0
+scale = Vector2(0.598667, 0.594638)
+texture = ExtResource("2_nuvov")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 911.0
+offset_top = 34.0
+offset_right = 1060.0
+offset_bottom = 74.0
+color = Color(0, 0, 0, 0.686275)
+
 [node name="Money" type="Label" parent="."]
-offset_left = 938.0
+offset_left = 924.0
 offset_top = 42.0
-offset_right = 978.0
+offset_right = 964.0
 offset_bottom = 65.0
-text = "0"
+text = "$: 0"
 
 [node name="Booster" type="Button" parent="."]
-offset_left = 412.0
-offset_top = 328.0
-offset_right = 558.0
-offset_bottom = 360.0
-text = "Booster
+offset_left = 71.0
+offset_top = 136.0
+offset_right = 217.0
+offset_bottom = 168.0
+text = "Purchase Booster
 "
 
 [node name="BoosterCost" type="Label" parent="Booster"]
@@ -26,50 +43,60 @@ offset_left = 3.0
 offset_top = -30.0
 offset_right = 117.0
 offset_bottom = -7.0
-text = "Booster Cost"
+text = "Booster Cost:"
 
 [node name="ReinforcedMouth" type="Button" parent="."]
-offset_left = 812.0
-offset_top = 353.0
-offset_right = 868.0
-offset_bottom = 384.0
-text = "Mouth"
+offset_left = 60.0
+offset_top = 508.0
+offset_right = 283.0
+offset_bottom = 539.0
+text = "Purchase Reinforced Mouth"
 
 [node name="ReinforcedMouthCost" type="Label" parent="ReinforcedMouth"]
 layout_mode = 0
-offset_left = -27.0
-offset_top = -30.0
-offset_right = 68.0
-offset_bottom = -7.0
-text = "Mouth Cost: "
+offset_left = 3.0
+offset_top = -28.0
+offset_right = 189.0
+offset_bottom = -5.0
+text = "Reinforced Mouth Cost: "
 
 [node name="Fins" type="Button" parent="."]
-offset_left = 112.0
-offset_top = 478.0
-offset_right = 330.0
-offset_bottom = 509.0
-text = "Fins"
+offset_left = 69.0
+offset_top = 328.0
+offset_right = 219.0
+offset_bottom = 359.0
+text = "Purchase Fins"
 
 [node name="FinsCost" type="Label" parent="Fins"]
 layout_mode = 0
-offset_left = 12.0
+offset_left = 3.0
 offset_top = -40.0
-offset_right = 204.0
+offset_right = 195.0
 offset_bottom = -17.0
 text = "Fins Cost: "
 
+[node name="textBubble" type="TextureRect" parent="."]
+visible = false
+offset_left = 380.0
+offset_top = 33.0
+offset_right = 680.0
+offset_bottom = 333.0
+scale = Vector2(1.21949, 0.552088)
+texture = ExtResource("3_8b427")
+
 [node name="ErrorLabel" type="Label" parent="."]
-offset_left = 487.0
-offset_top = 208.0
-offset_right = 527.0
-offset_bottom = 231.0
+offset_left = 439.0
+offset_top = 82.0
+offset_right = 684.0
+offset_bottom = 105.0
+rotation = -0.000291896
 
 [node name="NextDay" type="Button" parent="."]
-offset_left = 883.0
-offset_top = 258.0
-offset_right = 962.0
-offset_bottom = 289.0
-text = "Next Day"
+offset_left = 1022.0
+offset_top = 601.0
+offset_right = 1101.0
+offset_bottom = 632.0
+text = "Exit"
 
 [connection signal="pressed" from="Booster" to="." method="_on_booster_pressed"]
 [connection signal="pressed" from="ReinforcedMouth" to="." method="_on_mouth_pressed"]
