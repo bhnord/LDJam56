@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://l23q5pi2t3rk"]
+[gd_scene load_steps=6 format=3 uid="uid://l23q5pi2t3rk"]
 
 [ext_resource type="PackedScene" uid="uid://dfonpmtdtv4xx" path="res://other/hooks.tscn" id="1_5hlek"]
 [ext_resource type="PackedScene" uid="uid://dpvlu3o4haytq" path="res://sprites/player.tscn" id="2_mghs8"]
+[ext_resource type="PackedScene" path="res://scenes/bounds.tscn" id="3_qmwoy"]
+[ext_resource type="Texture2D" uid="uid://d2nndgjyxt2bf" path="res://sprites/boat.png" id="4_pidlm"]
 
 [sub_resource type="GDScript" id="GDScript_mt0se"]
 script/source = "extends Node2D
@@ -13,13 +15,11 @@ class_name LevelOpts
 [node name="Boat" type="Node2D"]
 script = SubResource("GDScript_mt0se")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -5984.0
-offset_top = -5508.0
-offset_right = -5944.0
-offset_bottom = -5468.0
-scale = Vector2(337.841, 337.841)
-color = Color(0.52, 0.3224, 0.3224, 1)
+[node name="Boat" type="Sprite2D" parent="."]
+position = Vector2(955, 597)
+rotation = -1.56775
+scale = Vector2(0.570109, 0.570109)
+texture = ExtResource("4_pidlm")
 
 [node name="Hooks" parent="." instance=ExtResource("1_5hlek")]
 NUM_HOOKS = 8
@@ -27,3 +27,5 @@ DIFFICULTY_LEVEL = 2
 
 [node name="Player" parent="." instance=ExtResource("2_mghs8")]
 position = Vector2(575, 301)
+
+[node name="Bounds" parent="." instance=ExtResource("3_qmwoy")]
