@@ -9,6 +9,20 @@
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_wvqht")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Money" type="Label" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 30.0
+offset_right = 67.0
+offset_bottom = 53.0
+
+[node name="Upgrades" type="Label" parent="CanvasLayer"]
+offset_left = 24.0
+offset_top = 87.0
+offset_right = 64.0
+offset_bottom = 110.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 
