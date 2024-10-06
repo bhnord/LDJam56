@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://jgxluuhxpnmv"]
+
+[ext_resource type="Script" path="res://scenes/catch_human.gd" id="1_qgl2s"]
+[ext_resource type="Texture2D" uid="uid://c7f2myho3iqbi" path="res://sprites/fishmen/fishman_1.png" id="2_p53wo"]
+[ext_resource type="Script" path="res://scenes/fisherman.gd" id="4_mm0ae"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jnb7a"]
+load_path = "res://.godot/imported/fisherman_bg.png-3e546b343d319d4f353f297023bfff56.ctex"
+
+[sub_resource type="Animation" id="Animation_eqowm"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fisherman:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667, 0.533333, 0.8, 1.03333, 1.33333, 2.13333, 2.8, 3.2, 3.83333, 4.16667, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(918, 457), Vector2(918, 457), Vector2(918, 457), Vector2(884, 457), Vector2(963, 467), Vector2(1003, 466), Vector2(957, 418), Vector2(861, 351), Vector2(759, 344), Vector2(575, 384), Vector2(503, 495), Vector2(448, 793)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fisherman:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 0.533333, 0.766667, 1.16667, 1.36667, 1.76667, 2.16667, 2.76667, 3.2, 3.8, 4.13333, 5.03333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.169932, 0.169995, -0.461159, 0.375923, 0.375923, -0.377954, -0.377954, -0.84247, -1.67905, -2.38252, -2.78754, -2.74148]
+}
+
+[sub_resource type="Animation" id="Animation_fa57h"]
+resource_name = "plop"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fisherman:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.833333, 1, 1.23333, 1.46667, 1.7, 2.03333, 2.36667, 2.83333, 3.36667, 3.93333, 4.36667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(945, 397), Vector2(918, 406), Vector2(918, 406), Vector2(918, 406), Vector2(918, 406), Vector2(918, 406), Vector2(881, 394), Vector2(807, 407), Vector2(747, 432), Vector2(687, 481), Vector2(609, 619), Vector2(578, 736), Vector2(587, 820)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fisherman:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 0.833333, 1.03333, 1.23333, 1.4, 1.76667, 2.03333, 2.33333, 2.76667, 3.36667, 3.9, 4.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.153493, 0.132442, -0.180623, 0.22315, -0.248524, -0.486776, -0.959625, -1.75961, -2.37921, -2.77882, -2.71556, -2.71556]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_simw5"]
+_data = {
+"RESET": SubResource("Animation_eqowm"),
+"plop": SubResource("Animation_fa57h")
+}
+
+[node name="CatchHuman" type="Node2D"]
+script = ExtResource("1_qgl2s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Control"]
+position = Vector2(570, 231)
+scale = Vector2(0.422803, 0.440252)
+texture = SubResource("CompressedTexture2D_jnb7a")
+
+[node name="Fisherman" type="Sprite2D" parent="CanvasLayer/HBoxContainer/Control"]
+position = Vector2(918, 457)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_p53wo")
+script = ExtResource("4_mm0ae")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/HBoxContainer/Control/Fisherman"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_simw5")
+}
