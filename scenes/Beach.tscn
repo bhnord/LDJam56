@@ -13,11 +13,11 @@ rotation = -1.5701
 scale = Vector2(0.658274, 0.658274)
 texture = ExtResource("4_snt8l")
 
-[node name="Bounds" parent="." instance=ExtResource("2_7v7qi")]
-
 [node name="Hooks" parent="." instance=ExtResource("1_8jict")]
 NUM_HOOKS = 8
 DIFFICULTY_LEVEL = 1
+
+[node name="Bounds" parent="." instance=ExtResource("2_7v7qi")]
 
 [node name="Player" parent="." instance=ExtResource("2_ro6of")]
 position = Vector2(577, 321)
