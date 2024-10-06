@@ -1,14 +1,13 @@
 extends Node
 
 var current_scene = null
-
+var curr_scene_path = ""
 enum Scene {PULLING_ROD, BEACH, END_OF_DAY, SHOP, BOAT, PIER}
 var scenes = ["res://scenes/rhythm/Rhythm.tscn", "res://scenes/Beach.tscn", "res://scenes/EndOfDay.tscn", "res://scenes/Shop.tscn", "res://scenes/Boat.tscn", "res://scenes/Pier.tscn"]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var root = get_tree().root
 	current_scene = root.get_child(root.get_child_count()-1)
-	var scene_name = current_scene.get_name()
 
 func switch_to_scene(scene:Scene):
 	call_deferred("_deferred_switch", scenes[scene])
@@ -32,6 +31,18 @@ var map = "res://scenes/Map/Map.tscn"
 func open_map():
 	call_deferred("_deferred_switch", map)
 
+var shop = "res://scenes/Shop.tscn"
+var shop_last_scene = null
+var shop_open = false
+func toggle_shop():
+	if not shop_open:
+		shop_open = true
+		shop_last_scene = current_scene.scene_file_path
+		call_deferred("_deferred_switch", shop)
+	else:
+		shop_open = false
+		call_deferred("_deferred_switch", shop_last_scene)
+	
 	
 		
 	
