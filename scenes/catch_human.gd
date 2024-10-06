@@ -7,13 +7,18 @@ func _ready() -> void:
 	else:
 		var texture_path = "res://sprites/fishmen/fishman_1.png"
 		
-		match GameManager.human_opponent.PULL_LVL:
-			0, 1, 2:
+		match GameManager.human_opponent.LEVEL:
+			1:
 				texture_path = "res://sprites/fishmen/fishman_1.png"
+			2:
+				texture_path = "res://sprites/fishmen/fishman_2.png"
+			3:
+				texture_path = "res://sprites/fishmen/fishman_3.png"
 			_:
+				print("WARN NO FISHERMAN FOR DIFFICULT", GameManager.human_opponent.PULL_LVL)
 				texture_path = "res://sprites/fishmen/fishman_1.png"
 
-		$CanvasLayer/HBoxContainer/Control/Fisherman.texture = load(texture_path)
+		#$CanvasLayer/HBoxContainer/Control/Fisherman.texture = load(texture_path)
 	
 	var animation_player = $CanvasLayer/HBoxContainer/Control/Fisherman/AnimationPlayer
 	animation_player.connect("animation_finished", _on_animation_finished)

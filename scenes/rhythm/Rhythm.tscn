@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://tcski75v85be"]
+[gd_scene load_steps=12 format=3 uid="uid://tcski75v85be"]
 
 [ext_resource type="Script" path="res://scripts/rhythm.gd" id="1_jh0ac"]
 [ext_resource type="Texture2D" uid="uid://diu8a582786vl" path="res://sprites/scene_swimmingGame.png" id="2_6ywib"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cj5wy5d5q8rli" path="res://sprites/beat-01.png" id="3_ruafc"]
 [ext_resource type="Script" path="res://scripts/rhythm_fish.gd" id="5_dfhau"]
 [ext_resource type="Texture2D" uid="uid://dill6txsnscsj" path="res://sprites/fishy_animation/fishy_animation_fr002.png" id="6_81l01"]
+[ext_resource type="Texture2D" uid="uid://b7u3we1s0d7xq" path="res://sprites/fish hook line.png" id="6_cvdb3"]
 [ext_resource type="Texture2D" uid="uid://dd8xeh1kctq37" path="res://sprites/fishy_animation/fishy_animation_fr001.png" id="7_wqo03"]
 [ext_resource type="Texture2D" uid="uid://dd01oxt1tmm2r" path="res://sprites/fishy_animation/fishy_animation_fr003.png" id="8_2qpyg"]
 [ext_resource type="Texture2D" uid="uid://cwo6ny8me8wh6" path="res://sprites/fishy_animation/fishy_animation_fr004.png" id="9_nmkp4"]
@@ -49,8 +50,15 @@ texture = ExtResource("3_ruafc")
 [node name="Fish" type="CharacterBody2D" parent="."]
 script = ExtResource("5_dfhau")
 
+[node name="FishHookLine" type="Sprite2D" parent="Fish"]
+position = Vector2(539, -180)
+rotation = 0.685692
+scale = Vector2(0.143398, 0.143398)
+texture = ExtResource("6_cvdb3")
+flip_h = true
+
 [node name="AnimatedFish" type="AnimatedSprite2D" parent="Fish"]
 position = Vector2(571, -24)
 scale = Vector2(0.425926, 0.425926)
 sprite_frames = SubResource("SpriteFrames_nxu7x")
-frame_progress = 0.641852
+frame_progress = 0.189937
