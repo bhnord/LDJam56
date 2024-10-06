@@ -15,7 +15,10 @@ func _ready() -> void:
 func switch_to_scene(scene:Scene):
 	call_deferred("_deferred_switch", scenes[scene])
 	
-
+func end_rhythm(win: bool):
+	pass
+	
+	
 func _deferred_switch(res_path):
 	current_scene.free()
 	var new_s = load(res_path)
