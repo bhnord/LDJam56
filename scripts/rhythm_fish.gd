@@ -3,7 +3,7 @@ extends CharacterBody2D
 const END_MARGIN = 80;
 
 # Movement variables
-var base_speed = -10.0  # Slight constant leftward movement
+var base_speed = 5.0  # Slight constant rightward movement
 var max_speed = 100.0  # Maximum speed in either direction
 
 var boost_foward = -60.0;
