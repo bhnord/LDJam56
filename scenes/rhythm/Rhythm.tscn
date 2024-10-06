@@ -53,4 +53,4 @@ script = ExtResource("5_dfhau")
 position = Vector2(571, -24)
 scale = Vector2(0.425926, 0.425926)
 sprite_frames = SubResource("SpriteFrames_nxu7x")
-frame_progress = 0.114542
+frame_progress = 0.189937

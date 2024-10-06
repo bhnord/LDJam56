@@ -1,5 +1,8 @@
 extends Node2D
 
+const GRACE_PERIOD = 2
+var elapsed_time = 0;
+
 enum Action {
 	HIT,
 	MISS,
@@ -43,6 +46,7 @@ func adjust_settings_by_upgrades(settings):
 	return settings
 
 func _process(delta: float) -> void:
+	elapsed_time += delta;
 	# This really just ends the game
 	$Fish.is_game_over()
 	
@@ -151,4 +155,5 @@ func handle_action(action: Action):
 		Action.HIT:
 			$Fish.handle_hit()
 		Action.MISS, Action.TOO_EARLY:
-			$Fish.handle_miss()
+			if elapsed_time > GRACE_PERIOD:
+				$Fish.handle_miss()
