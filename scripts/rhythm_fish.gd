@@ -12,6 +12,7 @@ var knockback_strength = 700.0/(GameManager.mouth+1)
 var knockback_duration = 0.2
 var knockback_timer = 0.0
 
+
 # Screen boundaries
 var screen_size
 
@@ -27,6 +28,17 @@ func is_game_over():
 		SceneManager.end_rhythm(false)
 		print("LOSS")
 	
+	
+
+func setSettings():
+	var level = GameManager.human_opponent.LEVEL
+	var fins = GameManager.fins
+	knockback_strength = ((700.0/(GameManager.mouth+1)) * (1.25 * level))
+	boost_foward = (-60.0 + (12.0 * level) + (fins * 4.0))
+	max_speed = 75 + (fins * 6)
+	base_speed = -10 + level
+	
+
 func is_at_win():
 	return global_position.x <= -1 * screen_size.x/2.0 + END_MARGIN
 	
