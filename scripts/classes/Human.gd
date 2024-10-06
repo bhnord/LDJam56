@@ -1,12 +1,27 @@
 extends Node
 class_name Human
 
-var WEIGHT:int = randi()%300 + 100 #100lb to 400lb
-var SIZEF: int = randi() % 4 + 4 #4ft to 8ft
-var SIZEI: int = randi() % 13 #inches
-var PULL_LVL: int = randi() % GameManager.MAX_LVL+1
-var WORTH: int = (WEIGHT+(SIZEF*10))*PULL_LVL / 100
+var LEVEL = 0
+var WEIGHT:int
+var SIZEF: int
+var SIZEI: int
+var PULL_LVL: int
+var WORTH: int
 
+static func create(level:int):
+	var instance = Human.new()
+	instance.LEVEL = level
+	instance.calc_params()
+	return instance
+
+func calc_params():
+	WEIGHT = randi()%(LEVEL * 100) + 100 #100lb to 400lb
+	SIZEF = randi() % 4 + (LEVEL + 1) #4ft to 8ft
+	SIZEI = randi() % 13 #inches
+	PULL_LVL = (randi() % GameManager.MAX_LVL+1)
+	WORTH = (WEIGHT+(SIZEF*10))*PULL_LVL / 100
+	
+	
 #if they can't pull in, give 1/4 of money
 func pull()->int:
 	if GameManager.fins < PULL_LVL:
