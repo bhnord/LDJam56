@@ -1,7 +1,10 @@
 extends Node2D
 
 const GRACE_PERIOD = 2
+const LATE_HIT_GRACE = .15;
+
 var elapsed_time = 0;
+var time_of_last_miss = 0;
 
 enum Action {
 	HIT,
@@ -36,6 +39,8 @@ var hits = 0;
 
 var settings;
 
+var did_beat_despawn_this_tick = false;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	settings = adjust_settings_by_upgrades(GameManager.level_settings)
@@ -55,8 +60,7 @@ func _process(delta: float) -> void:
 	handle_spawn_chance_interval_ramp(delta)
 	handle_beat_speed_interval_ramp(delta)
 		
-	if Input.is_action_just_pressed("rhythm_key"):
-		check_hit()
+	check_hit()
 
 func handle_beat_spawn(delta: float):
 	spawn_beat_timer += delta;
@@ -108,26 +112,39 @@ func clear_nearest_beat():
 
 
 func check_hit():
-	var center = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50) 
+	if did_beat_despawn_this_tick:
+		did_beat_despawn_this_tick = false;
+		handle_action(Action.MISS)
+		return
 	
-	var beat_nodes = get_tree().get_nodes_in_group("beats");
-	if(beat_nodes.size() == 0):
-		handle_action(Action.TOO_EARLY)
-		return;
+	if Input.is_action_just_pressed("rhythm_key"):
+		var center = Vector2(get_viewport_rect().size[0]/2, get_viewport_rect().size[1] - 50) 
 		
-	var nearest_beat_indicator = beat_nodes[0]
-	#We know this is safe
-	var nearest_beat_clone = get_tree().get_nodes_in_group("hidden_beats")[0]
-	if nearest_beat_indicator.position.distance_to(center) < HIT_ZONE_SIZE:
-		handle_action(Action.HIT)
-	else:
-		handle_action(Action.TOO_EARLY)
+		var beat_nodes = get_tree().get_nodes_in_group("beats");
+		if(beat_nodes.size() == 0):
+			handle_action(Action.TOO_EARLY)
+			return;
+			
+		var nearest_beat_indicator = beat_nodes[0]
+		#We know this is safe
+		var nearest_beat_clone = get_tree().get_nodes_in_group("hidden_beats")[0]
 		
-	nearest_beat_indicator.queue_free()
-	nearest_beat_clone.queue_free()
-
+		var action = Action.HIT;
+		if nearest_beat_indicator.position.distance_to(center) < HIT_ZONE_SIZE:
+			action = Action.HIT
+		else:
+			if elapsed_time - time_of_last_miss <= LATE_HIT_GRACE:
+				return
+				
+			action = Action.TOO_EARLY
+			
+		nearest_beat_indicator.kill()
+		nearest_beat_clone.kill()
+		handle_action(action)
+		did_beat_despawn_this_tick = false;
+		
 func _on_beat_finished():
-	handle_action(Action.MISS)
+	did_beat_despawn_this_tick = true;
 
 func spawn_text(action: Action):
 	var text = hit_miss_scene.instantiate()
@@ -149,7 +166,9 @@ func spawn_text(action: Action):
 	add_child(text)
 
 func handle_action(action: Action):
-	print(action)
+	if Action.MISS:
+		time_of_last_miss = elapsed_time;
+		
 	spawn_text(action)
 	match action:
 		Action.HIT:
