@@ -3,7 +3,7 @@ class_name MapFish
 
 @export var move_speed = 125.0
 
-var loc_close: MapLocation= null;
+var loc_close: MapLocation = null
 
 
 func _process(_delta):
