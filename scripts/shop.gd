@@ -3,6 +3,10 @@ extends Node2D
 func _ready() -> void:
 	update_label()
 
+func _process(delta) -> void:
+	if Input.is_action_just_pressed("shop"):
+		SceneManager.toggle_shop()
+
 func _on_booster_pressed() -> void:  	
 	if GameManager.purchase_item(get_upgrade_cost(GameManager.booster)):
 		GameManager.booster += 1

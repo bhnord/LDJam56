@@ -44,6 +44,8 @@ func _process(_delta):
 			hook.interact()
 	if Input.is_action_just_pressed("open_map"):
 		SceneManager.open_map()
+	if Input.is_action_just_pressed("shop"):
+		SceneManager.toggle_shop()
 	
 	
 	
