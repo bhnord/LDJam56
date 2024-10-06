@@ -11,7 +11,6 @@ var speed = 200
 var target_position
 var disappear_time = .05
 var is_indicator;
-var is_dead = false;
 var lively_color = Color(1.0, 0.51, 0.37, 1.0)  # Vibrant orange
 
 func init(is_i: bool):
@@ -60,14 +59,10 @@ func _process(delta: float) -> void:
 func will_cause_overshoot(old_distance, new_distance):
 	return (old_distance > 0) != (new_distance > 0)
 
-func kill():
-	is_dead = true;
-	queue_free()
 
 func _on_disappear_timer_timeout():
 	queue_free()
-	if !is_dead:
-		emit_signal(\"beat_finished\")
+	emit_signal(\"beat_finished\")
 "
 
 [node name="Beat" type="Node2D"]
