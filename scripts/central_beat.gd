@@ -8,8 +8,8 @@ var current_tween: Tween
 var last_intensity = 0.0
 var beat_radius: float  # Radius of the central beat sprite 
 
-var base_color = Color(0.4, 0.4, 0.4, 1.0)  # Grayed-out white
-var lively_color = Color(1.0, 0.5, 0.0, 1.0)  # Vibrant orange
+var base_color = Color(0.64, 0.35, 0.27, 1.0)  # Grayed-out 
+var lively_color = Color(1.0, 0.51, 0.37, 1.0)  # Vibrant orange
 
 func _ready():
 	resize()

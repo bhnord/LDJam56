@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://scripts/rhythm.gd" id="1_jh0ac"]
 [ext_resource type="Texture2D" uid="uid://diu8a582786vl" path="res://sprites/scene_swimmingGame.png" id="2_6ywib"]
 [ext_resource type="Script" path="res://scripts/central_beat.gd" id="2_edscl"]
-[ext_resource type="Texture2D" uid="uid://cj5wy5d5q8rli" path="res://sprites/beat-01.png" id="3_ruafc"]
 [ext_resource type="Script" path="res://scripts/rhythm_fish.gd" id="5_dfhau"]
 [ext_resource type="Texture2D" uid="uid://dill6txsnscsj" path="res://sprites/fishy_animation/fishy_animation_fr002.png" id="6_81l01"]
 [ext_resource type="Texture2D" uid="uid://b7u3we1s0d7xq" path="res://sprites/fish hook line.png" id="6_cvdb3"]
 [ext_resource type="Texture2D" uid="uid://dd8xeh1kctq37" path="res://sprites/fishy_animation/fishy_animation_fr001.png" id="7_wqo03"]
 [ext_resource type="Texture2D" uid="uid://dd01oxt1tmm2r" path="res://sprites/fishy_animation/fishy_animation_fr003.png" id="8_2qpyg"]
 [ext_resource type="Texture2D" uid="uid://cwo6ny8me8wh6" path="res://sprites/fishy_animation/fishy_animation_fr004.png" id="9_nmkp4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dlw42"]
+load_path = "res://.godot/imported/beat-01.png-a8a35209fa2420f24abd16f26ec09fe9.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nxu7x"]
 animations = [{
@@ -45,7 +47,7 @@ script = ExtResource("2_edscl")
 [node name="Sprite2D" type="Sprite2D" parent="CentralBeat"]
 modulate = Color(0, 0, 1, 1)
 scale = Vector2(0.96875, 0.96875)
-texture = ExtResource("3_ruafc")
+texture = SubResource("CompressedTexture2D_dlw42")
 
 [node name="Fish" type="CharacterBody2D" parent="."]
 script = ExtResource("5_dfhau")
